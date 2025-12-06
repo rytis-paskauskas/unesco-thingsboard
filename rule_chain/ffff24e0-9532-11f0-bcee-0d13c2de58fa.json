@@ -1,0 +1,667 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Author: Rytis Paškauskas"
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "002d87e0-9533-11f0-bcee-0d13c2de58fa"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "ffff24e0-9532-11f0-bcee-0d13c2de58fa"
+    },
+    "name" : "Milesight EM500-UDL decoder",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 2,
+      "toIndex" : 1,
+      "type" : "Post attributes"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "RPC Request from Device"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 4,
+      "type" : "Other"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 5,
+      "type" : "RPC Request to Device"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 10,
+      "type" : "Post telemetry"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 2,
+      "type" : "False"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 7,
+      "type" : "True"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 11,
+      "type" : "False"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 11,
+      "type" : "True"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 2,
+      "type" : "False"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 8,
+      "type" : "True"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 6,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 13,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 13,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 16,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 12,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 14,
+      "toIndex" : 19,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 17,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 18,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 17,
+      "toIndex" : 14,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 19,
+      "toIndex" : 0,
+      "type" : "True"
+    } ],
+    "firstNodeIndex" : 9,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "layoutX" : 1252,
+        "layoutY" : 578
+      },
+      "configuration" : {
+        "defaultTTL" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d12b0-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Save Timeseries",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 877,
+        "layoutY" : 279
+      },
+      "configuration" : {
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : false
+      },
+      "configurationVersion" : 2,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d12b1-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Save Attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 451,
+        "layoutY" : 383
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1758273671754,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d39c0-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Message Type Switch",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 877,
+        "layoutY" : 377
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d39c1-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Log RPC from Device",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 877,
+        "layoutY" : 479
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d39c2-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Log Other",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 877,
+        "layoutY" : 579
+      },
+      "configuration" : {
+        "timeoutInSeconds" : 60
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d60d0-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "RPC Call Request",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 54,
+        "layoutY" : 378
+      },
+      "configuration" : {
+        "originatorTypes" : [ "ENTITY_GROUP" ]
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d60d1-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Is Entity Group",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbOriginatorTypeFilterNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 52,
+        "layoutY" : 477
+      },
+      "configuration" : {
+        "messageTypes" : [ "POST_ATTRIBUTES_REQUEST", "RPC_CALL_FROM_SERVER_TO_DEVICE" ]
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d60d2-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Post attributes or RPC request",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeFilterNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 452,
+        "layoutY" : 481
+      },
+      "configuration" : {
+        "entityGroupId" : null,
+        "entityGroupIsMessageOriginator" : true
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d60d3-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Duplicate To Group Entities",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbDuplicateMsgToGroupNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Process incoming messages from devices with the alarm rules defined in the device profile. Dispatch all incoming messages with \"Success\" relation type.",
+        "layoutX" : 51,
+        "layoutY" : 251
+      },
+      "configuration" : {
+        "persistAlarmRulesState" : false,
+        "fetchAlarmRulesStateOnStart" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d87e0-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "Device Profile Node",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.profile.TbDeviceProfileNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "2025-08-14 Rytis: Milesight EM500-UDL default decoder Transcribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders\n",
+        "layoutX" : 877,
+        "layoutY" : 178
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "  // Time-stamp: <2025-08-14 13:44:11 rytis>\n  // Made with love by Rytis.\n  // Adapted after: https://github.com/Milesight-IoT/SensorDecoders/blob/main/EM_Series/EM500_Series/EM500-UDL/EM500-UDL_Decoder.js\n  var RAW_VALUE = 0x00; \n  var b64 = msg.data; \n  var bytes = base64ToBytes(b64);\n  var decoded = decodeToJson(\"{}\");\n  var point = decodeToJson(\"{}\");\n  var channel_id = 0;\n  var channel_type = 0;\n  var result = null;\n  function u8(idx) { return (bytes[idx] & 0xFF); }\n  function i8(idx) { var v = u8(idx); return (v > 0x7F) ? v - 256 : v; }\n  function readUInt16LE(idx){ return (u8(idx)) | (u8(idx+1) << 8); }\n  function readInt16LE(idx) { var v = readUInt16LE(idx); return (v >= 0x8000) ? v - 0x10000 : v; }\n  function readUInt32LE(idx){ var v = (u8(idx)) | (u8(idx+1) << 8) | (u8(idx+2) << 16) | (u8(idx+3) << 24); return (v >>> 0); }\n  function readInt32LE(idx){ var u = readUInt32LE(idx); return (u > 0x7FFFFFFF) ? (u - 0x100000000) : u; }\n  function hex2(n){ return (\"0\" + (n & 0xFF).toString(16)).slice(-2); }\n  function readHexStringAt(idx, len){ var out = []; for (var k = 0; k < len; k++) out.push(hex2(u8(idx + k))); return out.join(\"\"); }\n  function readProtocolVersionAt(idx){ var b = u8(idx); var major = (b & 0xF0) >> 4; var minor = b & 0x0F; return \"v\" + major + \".\" + minor; }\n  function readHardwareVersionAt(idx){ var major = u8(idx); var minor = (u8(idx + 1) >> 4); return \"v\" + major + \".\" + minor; }\n  function readFirmwareVersionAt(idx){ var major = u8(idx); var minor = u8(idx + 1); return \"v\" + major + \".\" + minor; }\n  function readTslVersionAt(idx){ var major = u8(idx); var minor = u8(idx + 1); return \"v\" + major + \".\" + minor; }\n  function readSerialNumberAt(idx, len){ return readHexStringAt(idx, len); }\n  function readD2DCommandAt(idx){ return hex2(u8(idx + 1)) + hex2(u8(idx + 0)); }\n  function getValue(map, key){ if (RAW_VALUE) return key; var v = map[key]; if (!v) v = \"unknown\"; return v; }\n  function readLoRaWANClass(t){ var m = {0:\"Class A\",1:\"Class B\",2:\"Class C\",3:\"Class CtoB\"};\treturn getValue(m, t); }\n  function readResetEvent(s){ var m = {0:\"normal\",1:\"reset\"}; return getValue(m, s); }\n  function readDeviceStatus(s){ var m = {0:\"off\",1:\"on\"}; return getValue(m, s); }\n  function readYesNoStatus(s){ var m = {0:\"no\",1:\"yes\"}; return getValue(m, s); }\n  function readEnableStatus(s){ var m = {0:\"disable\",1:\"enable\"}; return getValue(m, s); }\n  function readConditionType(c){ var m = {0:\"disable\",1:\"below\",2:\"above\",3:\"between\",4:\"outside\",5:\"mutation\"}; return getValue(m, c); }\n  function readDistanceAlarm(s){ var m = {0:\"normal\",1:\"threshold_alarm\",2:\"mutation_alarm\"}; return getValue(m, s); }\n  function readD2DMode(mo){ var m = {1:\"threshold_alarm\",2:\"threshold_alarm_release\",3:\"mutation_alarm\"}; return getValue(m, mo); }\n  function isArray(v){ return v != null && v.constructor == Array; }\n  function extend(dst, src) { var ks = Object.keys(src); var i = 0; while (i < ks.length) { var k = ks[i++]; if (isArray(dst[k]) && isArray(src[k])) dst[k] = dst[k].concat(src[k]); else dst[k] = src[k]; } }\n\n  // --- Downlink response handler (works on global bytes/u8/reads) ---\n  function handle_downlink_response(channel_type, offset){\n      var out = decodeToJson(\"{}\");\n      var cfg = null;\n      var rc = null;\n      var dc = null;\n      var arr = [];\n      var data = 0;\n      var condition = 0;\n      var id = 0;\n      var enable = 0;\n      var alarm_release_enable = 0;\n      var interval_type = 0;\n      switch (channel_type) {\n      case 0x02: out.put('collection_interval', readUInt16LE(offset)); offset += 2; break;\n      case 0x03: out.put('report_interval', readUInt16LE(offset)); offset += 2; break;\n      case 0x06:\n    \tdata = u8(offset);\n    \tcondition = data & 0x07;\n    \tid = (data >> 3) & 0x03;\n    \tenable = (data >> 6) & 0x01;\n    \talarm_release_enable = (data >> 7) & 0x01;\n    \tif (id == 1) {\n    \t    cfg.put('enable', readEnableStatus(enable));\n    \t    cfg.put('condition', readConditionType(condition));\n    \t    cfg.put('min_threshold', readInt16LE(offset + 1));\n    \t    cfg.put('max_threshold', readInt16LE(offset + 3));\n    \t    cfg.put('alarm_release_enable', readEnableStatus(alarm_release_enable));\n    \t    out.put('distance_threshold_alarm_config', cfg);\n    \t} else if (id == 2) {\n    \t    cfg.put('enable', readEnableStatus(enable));\n    \t    cfg.put('condition', readConditionType(condition)); // skip 2 bytes\n    \t    cfg.put('mutation_value', readUInt16LE(offset + 3));\n    \t    cfg.put('alarm_release_enable', readEnableStatus(alarm_release_enable));\n    \t    out.put('distance_mutation_alarm_config', cfg);\n    \t}\n    \toffset += 9;\n    \tbreak;\n      case 0x10: out.put('reboot', readYesNoStatus(1)); offset += 1; break;\n      case 0x11: out.put('timestamp', readUInt32LE(offset)); offset += 4; break;\n      case 0x17: out.put('timezone', readInt16LE(offset) / 10.0); offset += 2; break;\n      case 0x1c:\n    \trc.put('counts', u8(offset));\n    \trc.put('interval', u8(offset + 1));\n    \tout.put('recollection_config', rc);\n    \toffset += 2;\n    \tbreak;\n      case 0x27: out.put('clear_history', readYesNoStatus(1)); offset += 1; break;\n      case 0x28: out.put('report_status', readYesNoStatus(1)); offset += 1; break;\n      case 0x35: out.put('d2d_key', readHexStringAt(offset, 8)); offset += 8; break;\n      case 0x3b: out.put('time_sync_enable', readEnableStatus(u8(offset))); offset += 1; break;\n      case 0x4a: out.put('sync_time', readYesNoStatus(1)); offset += 1; break;\n      case 0x68: out.put('history_enable', readEnableStatus(u8(offset))); offset += 1; break;\n      case 0x69: out.put('retransmit_enable', readEnableStatus(u8(offset))); offset += 1; break;\n      case 0x6a:\n    \tinterval_type = u8(offset);\n    \tif (interval_type == 0) {\n    \t    out.put('retransmit_interval', readUInt16LE(offset + 1));\n    \t} else if (interval_type == 1) {\n    \t    out.put('resend_interval', readUInt16LE(offset + 1));\n    \t}\n    \toffset += 3;\n    \tbreak;\n      case 0x84: out.put('d2d_enable', readEnableStatus(u8(offset))); offset += 1; break;\n      case 0x96:\n    \tcfg.put('mode', readD2DMode(u8(offset)));\n    \tcfg.put('enable', readEnableStatus(u8(offset + 1)));\n    \tcfg.put('lora_uplink_enable', readEnableStatus(u8(offset + 2)));\n    \tcfg.put('d2d_cmd', readD2DCommandAt(offset + 3));\n    \toffset += 8;\n    \tarr.push(cfg);\n    \tout.put('d2d_master_config', arr);\n    \tbreak;\n      case 0xF1:\n    \tdc.put('enable', readEnableStatus(u8(offset + 1)));\n    \tdc.put('calibration_value', readInt16LE(offset + 2));\n    \tout.put('distance_calibration_config', dc);\n    \toffset += 4;\n    \tbreak;\n      case 0xF2: out.put('alarm_report_counts', readUInt16LE(offset)); offset += 2; break;\n      case 0xF5: out.put('threshold_alarm_release_enable', readEnableStatus(u8(offset))); offset += 1; break;\n      default: throw \"unknown downlink response\";\n      }\n      return { data: out, offset: offset };\n  }\n  // --- Main parsing loop ---\n\n  var i = 0;\n  while (i < bytes.size()) {\n      channel_id = u8(i++);\n      channel_type = u8(i++);\n      // IPSO VERSION\n      if (channel_id == 0xFF && channel_type == 0x01) {\n    \tdecoded.ipso_version = readProtocolVersionAt(i);\n    \ti += 1;\n    \t\n      } // HARDWARE VERSION\n      else if (channel_id == 0xFF && channel_type == 0x09) {\n    \tdecoded.hardware_version = readHardwareVersionAt(i);\n    \ti += 2;\n    \t\n      } // FIRMWARE VERSION\n      else if (channel_id == 0xFF && channel_type == 0x0A) {\n    \tdecoded.firmware_version = readFirmwareVersionAt(i);\n    \ti += 2;\n    \t// TSL VERSION\n      } else if (channel_id == 0xFF && channel_type == 0xFF) {\n    \tdecoded.tsl_version = readTslVersionAt(i);\n    \ti += 2;\n    \t// SERIAL NUMBER (8 bytes hex)\n      } else if (channel_id == 0xFF && channel_type == 0x16) {\n    \tdecoded.sn = readSerialNumberAt(i, 8);\n    \ti += 8;\n    \t// LORAWAN CLASS TYPE\n      } else if (channel_id == 0xFF && channel_type == 0x0F) {\n    \tdecoded.lorawan_class = readLoRaWANClass(u8(i));\n    \ti += 1;\n    \t// RESET EVENT (constant 1 per original)\n      } else if (channel_id == 0xFF && channel_type == 0xFE) {\n    \tdecoded.reset_event = readResetEvent(1);\n    \ti += 1;\n    \t// DEVICE STATUS (constant 1 per original)\n      } else if (channel_id == 0xFF && channel_type == 0x0B) {\n    \tdecoded.device_status = readDeviceStatus(1);\n    \ti += 1;\n    \t// BATTERY\n      } else if (channel_id == 0x01 && channel_type == 0x75) {\n    \tdecoded.battery = u8(i);\n    \ti += 1;\n    \t// DISTANCE\n      } else if (channel_id == 0x03 && channel_type == 0x82) {\n    \tdecoded.distance = readUInt16LE(i) / 10.0;\n    \ti += 2;\n    \t// DISTANCE MUTATION\n      } else if (channel_id == 0x83 && channel_type == 0xE9) {\n    \tdecoded.distance = readUInt16LE(i) / 10.0;\n    \tdecoded.distance_mutation = readUInt16LE(i + 2) / 10.0;\n    \tdecoded.distance_alarm = readDistanceAlarm(u8(i + 4));\n    \ti += 5;\n    \t// HISTORY DATA\n      } else if (channel_id == 0x20 && channel_type == 0xCE) {\n    \tpoint.timestamp = readUInt32LE(i);\n    \tpoint.distance = readUInt16LE(i + 4);\n    \tif (decoded.history == null) decoded.history = [];\n    \tdecoded.history.push(point);\n    \ti += 6;\n    \t// DOWNLINK RESPONSE\n      } else if (channel_id == 0xFE || channel_id == 0xFF) {\n    \tresult = handle_downlink_response(channel_type, i);\n    \textend(decoded, res.data);\n    \ti = res.offset;\n      } else {\n    \tbreak;\n      }\n  }\n  return { msg: decoded, metadata: metadata, msgType: msgType };"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764240818527,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "002d87e2-9533-11f0-bcee-0d13c2de58fa"
+      },
+      "name" : "decoder",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 451,
+        "layoutY" : 279
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ ],
+        "latestTsKeyNames" : [ ],
+        "serverAttributeNames" : [ "inactivityTimeout" ],
+        "sharedAttributeNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c6ad69f0-ca0b-11f0-8f75-a755c2118e96"
+      },
+      "name" : "test for inactivityTimeout",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 452,
+        "layoutY" : 179
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "msg={'inactivityTimeout':3660000};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n//return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c6ad69f1-ca0b-11f0-8f75-a755c2118e96"
+      },
+      "name" : "set inactivity timeout",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 876,
+        "layoutY" : 77
+      },
+      "configuration" : {
+        "event" : "ACTIVITY_EVENT"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5ae01aa0-ca0c-11f0-8f75-a755c2118e96"
+      },
+      "name" : "Make it active",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbDeviceStateNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1251,
+        "layoutY" : 378
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "if (msg.attributes != null) {\n    msg.remove(\"attributes\");\n}\nif (msg.info != null) {\n    msg.remove(\"info\");\n}\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764240818527,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8fbea660-ca0c-11f0-8f75-a755c2118e96"
+      },
+      "name" : "Clean up telemetry",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1852,
+        "layoutY" : 134
+      },
+      "configuration" : {
+        "messageNames" : [ "distance" ],
+        "metadataNames" : [ "slope", "intercept" ],
+        "checkAllKeys" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764166115727,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "1899f7b0-cacf-11f0-8f75-a755c2118e96"
+      },
+      "name" : "Linear function",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1251,
+        "layoutY" : 178
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ ],
+        "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ "slope", "intercept" ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764240818527,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "189a1ec0-cacf-11f0-8f75-a755c2118e96"
+      },
+      "name" : "Get slope and intercept",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1252,
+        "layoutY" : 279
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var tmp = (parseFloat(metadata.ss_slope)*msg.distance) + parseFloat(metadata.ss_intercept);\nmsg.fDistance =  Math.round(tmp * 10) / 10.0;\nmetadata.remove(\"ss_intercept\");\nmetadata.remove(\"ss_slope\");\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764240818527,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "189a1ec1-cacf-11f0-8f75-a755c2118e96"
+      },
+      "name" : "Calculate the fd",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1252,
+        "layoutY" : 80
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "msg={'slope':1.0, 'intercept':0.0};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764240703237,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "f7360060-cb7c-11f0-8f75-a755c2118e96"
+      },
+      "name" : "make slope and intercept attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1250,
+        "layoutY" : 479
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.distance < 999.0;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1764240892065,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "f7362770-cb7c-11f0-8f75-a755c2118e96"
+      },
+      "name" : "error test",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
