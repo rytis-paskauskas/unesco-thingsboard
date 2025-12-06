@@ -1,0 +1,71 @@
+{
+  "entityType" : "INTEGRATION",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "allowCreateDevicesOrAssets" : true,
+    "configuration" : {
+      "clientConfiguration" : {
+        "host" : "102.37.144.78",
+        "port" : 8884,
+        "cleanSession" : true,
+        "retainedMessage" : false,
+        "ssl" : true,
+        "connectTimeoutSec" : 10,
+        "clientId" : "",
+        "maxBytesInMessage" : 32368,
+        "credentials" : {
+          "type" : "cert.PEM",
+          "caCertFileName" : "chain.pem",
+          "caCert" : "-----BEGIN CERTIFICATE-----\nMIIFVzCCBD+gAwIBAgIRANzCgKcAQQdigKtDMJ2KsgkwDQYJKoZIhvcNAQELBQAw\ngakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2ll\nbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQwEgYD\nVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3DQEJ\nARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MB4XDTI1MDQwNjEzNDg0NVoXDTI3\nMDgwNDEzNDg0NVowgfUxCzAJBgNVBAYTAklUMRAwDgYDVQQIDAdUcmllc3RlMRAw\nDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2llbmNlIFRlY2hub2xvZ3kgYW5k\nIElubm92YXRpb24gVW5pdCBhdCBJQ1RQMS8wLQYDVQQLDCZNYXJjb25pIExhYiBN\nUVRUIENlcnRpZmljYXRlIEF1dGhvcml0eTEvMC0GA1UEAwwmTWFyY29uaSBMYWIg\nTVFUVCBDZXJ0aWZpY2F0ZSBBdXRob3JpdHkxJzAlBgkqhkiG9w0BCQEWGHJ5dGlz\nLnBhc2thdXNrYXNAaWN0cC5pdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\nggEBAJdT0n0yvlhnpcime/5wPGp7hkn2sqXbSaoSTvHTJ5L6SsKQ9I0jzDjkySR8\n7yUvJS866LlFgwuc6icsbofqC5gNDfU1tn61I81Fc8Dl2u1AUfmFLXtVqzUgq38y\ndP6SL4jqxtjgGNxNc7r4uq6XRClLrCGKbKtDkIceTo6688gyZeTq5Ymkzo1+0/xh\niCAxsIjowiiNhSUTAPS5iZU739bcL1iYs6dmGQIJebozFibvrNgtQxKAGVG0Pyo7\new6vnhsj9S5oRzCvN5pj1pch+JdmMGpe93kJrTJfg3hqyp1HehRL4LwvphiEKLnz\nFP2av1pelAeG2EbalHrdmGGd+rcCAwEAAaOCASowggEmMAwGA1UdEwQFMAMBAf8w\nHQYDVR0OBBYEFBoN0ZZn0LYNVdIqnhmZh4Vu+1hwMIHpBgNVHSMEgeEwgd6AFCe7\nAejtPmtBg6Q9yUtP50+zrkEmoYGvpIGsMIGpMQswCQYDVQQGEwJJVDEQMA4GA1UE\nBwwHVHJpZXN0ZTE3MDUGA1UECgwuU2NpZW5jZSBUZWNobm9sb2d5IGFuZCBJbm5v\ndmF0aW9uIFVuaXQgLS0gSUNUUDEUMBIGA1UECwwLTWFyY29uaSBMYWIxEDAOBgNV\nBAMMB1Jvb3QgQ0ExJzAlBgkqhkiG9w0BCQEWGHJ5dGlzLnBhc2thdXNrYXNAaWN0\ncC5pdIIUe5YNWksyslMLWaMurxsW94qtfuowCwYDVR0PBAQDAgEGMA0GCSqGSIb3\nDQEBCwUAA4IBAQBI5nTcZ82t78Qa6svlPtcNQTeyv0LgDUd1Pn8jQLp+IDMkapKB\n5vpQFZZ/zSTo6EegSWOH2oOQXQmKAKY7WgsAIHMEkRCQXiozqORSET+FpgEjdbgA\nirZiA5PDTJPl3qdxCWbxDaBoKAiav6NeUpGGIybgra49UdDXcwcya2dlus7b91Oh\nAZPv9019Y2rwGbHsynBa8KEYI6yBRdB3XpJDvmhcljEXomEdZYF+1/WKGOAGiOXD\nsSrkD172TIoTsctNO+NvUEtOq8DX65KkMo0fe3ypqMdT2DKgJED1vDozCOSqnK7g\nh3djlyqx2i/B38TBODA5BYF/jw/I/NSbJE6Q\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFDjCCA/agAwIBAgIUe5YNWksyslMLWaMurxsW94qtfuowDQYJKoZIhvcNAQEL\nBQAwgakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5T\nY2llbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQw\nEgYDVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3\nDQEJARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MB4XDTIzMDExNjA5MDEwNloX\nDTMzMDExMzA5MDEwNlowgakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3Rl\nMTcwNQYDVQQKDC5TY2llbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5p\ndCAtLSBJQ1RQMRQwEgYDVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBD\nQTEnMCUGCSqGSIb3DQEJARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MIIBIjAN\nBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxogYkEHp3P+3BW/4eSBrtEpPNrv4\nvvbK1DCh9cX9fOfzQkjU1oFOpA3z7x/q+SVdatM+LvPlx/fvmTI8yj9EHOExiosQ\ngg07wqPhzalv5iEqCQKR7bylF+gj0xae2dQR0VOzqDLYqs9qsOhdXs9en+dgpxgR\nsMf4n3L/YRC8FZSxhpXAXnH4bl14k0EY6BznOdNwpv2Lnyn0xHv4USda0bljCzrI\nn6+eDQIlepqqV4/MRBMJtGqjXO+DfWXNRvgf9lO2swL2ppm2ti5M7T2GVmMKIcQY\nQ4mCud4h/oKet089tAZvLEcSER0YVCOt4Q+QLU9TZCXR2csv7re85qwv3wIDAQAB\no4IBKjCCASYwDAYDVR0TBAUwAwEB/zAdBgNVHQ4EFgQUJ7sB6O0+a0GDpD3JS0/n\nT7OuQSYwgekGA1UdIwSB4TCB3oAUJ7sB6O0+a0GDpD3JS0/nT7OuQSahga+kgaww\ngakxCzAJBgNVBAYTAklUMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2ll\nbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQwEgYD\nVQQLDAtNYXJjb25pIExhYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3DQEJ\nARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0ghR7lg1aSzKyUwtZoy6vGxb3iq1+\n6jALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQELBQADggEBAHl0HV2QOQdCNWV2LIKg\nX7F1t+MbB+fDUA0Gzfvsi1JHRe5ji6WAmPy0rrdpdLQA6hkb/7IRO034/79KQYBv\n7cFUB5BxXcTJrGk9DunHW5zgUvnRxZn4HJVqHfvUpq5H+GRNr2lzudmj0pG6G7KI\nVXbnvdT/pqCvEEqdMlpRGGlOksKIcktnm4XcxHMtovohKhZKLcuxKi6GH/D50FDJ\nLKJR67Gfv1R3EQb8aAbUEOx0gd5Z66Wr3qO1/4L77wpGx9q1lXjQuUxN7XF7EuUV\n/HXGAm8K1i80t43pUB0MleqSDK5U59b0teDuf0U1uQS30rm7WyF7aorHQkVwO2UG\njdA=\n-----END CERTIFICATE-----\n",
+          "certFileName" : "UNESCO-TB-integration.crt",
+          "cert" : "Certificate:\n    Data:\n        Version: 3 (0x2)\n        Serial Number:\n            a9:5b:54:78:20:28:70:02:6d:d3:9e:75:3b:ae:18:4d\n        Signature Algorithm: sha256WithRSAEncryption\n        Issuer: C=IT, ST=Trieste, L=Trieste, O=Science Technology and Innovation Unit at ICTP, OU=Marconi Lab MQTT Certificate Authority, CN=Marconi Lab MQTT Certificate Authority/emailAddress=rytis.paskauskas@ictp.it\n        Validity\n            Not Before: Jun  6 09:54:08 2025 GMT\n            Not After : Jun  5 09:54:08 2030 GMT\n        Subject: C=IT, ST=Trieste, L=Trieste, O=Science Technology and Innovation Unit at ICTP, OU=Marconi Lab MQTT Certificate Authority, CN=UNESCO-TB-integration/emailAddress=rytis.paskauskas@ictp.it\n        Subject Public Key Info:\n            Public Key Algorithm: rsaEncryption\n                Public-Key: (2048 bit)\n                Modulus:\n                    00:b6:be:14:11:35:a1:d8:d0:70:fd:16:f7:e5:02:\n                    b4:eb:35:56:75:a2:7f:66:a1:58:2b:e6:51:91:e9:\n                    81:e6:f9:78:86:16:9a:33:1e:ed:7a:32:67:51:d2:\n                    63:00:e9:b5:2c:7f:76:56:97:5d:77:12:41:76:f6:\n                    40:20:6b:db:60:0f:36:5a:28:85:86:79:9c:74:27:\n                    a3:01:6a:11:f4:56:b3:38:db:a2:ab:5f:4e:d6:25:\n                    35:7b:43:df:4f:f4:2a:0f:60:b1:17:6b:fb:7e:34:\n                    d6:ad:54:50:df:46:b6:3f:7e:48:ce:65:aa:fb:9f:\n                    9b:09:f1:06:55:55:49:97:67:a6:9c:bb:18:ad:fe:\n                    08:c0:a3:71:24:e3:5f:23:34:ad:35:a3:81:36:32:\n                    b7:96:6a:9a:b1:4e:e3:ce:f5:bc:00:9a:90:d8:6e:\n                    c8:27:82:63:a8:38:d6:34:cb:db:54:fa:9b:4c:e5:\n                    b2:87:16:0f:e4:8f:1b:af:42:9b:a9:0e:27:bf:46:\n                    6b:0c:0c:2b:2f:db:29:3f:04:bf:11:5e:5b:7a:7d:\n                    78:7d:08:88:71:29:05:b1:d5:9f:c4:ff:ef:05:12:\n                    41:27:eb:c4:27:b4:61:9a:07:c8:a0:31:01:36:5f:\n                    06:4f:f8:a5:f9:00:39:6a:41:b3:4a:e3:31:f8:e3:\n                    f4:6f\n                Exponent: 65537 (0x10001)\n        X509v3 extensions:\n            X509v3 Basic Constraints: \n                CA:FALSE\n            X509v3 Subject Key Identifier: \n                42:39:CE:80:93:3A:3C:EF:76:39:AB:F7:2E:27:01:86:79:02:9A:FA\n            X509v3 Authority Key Identifier: \n                keyid:1A:0D:D1:96:67:D0:B6:0D:55:D2:2A:9E:19:99:87:85:6E:FB:58:70\n                DirName:/C=IT/L=Trieste/O=Science Technology and Innovation Unit -- ICTP/OU=Marconi Lab/CN=Root CA/emailAddress=rytis.paskauskas@ictp.it\n                serial:DC:C2:80:A7:00:41:07:62:80:AB:43:30:9D:8A:B2:09\n            X509v3 Extended Key Usage: \n                TLS Web Client Authentication\n            X509v3 Key Usage: \n                Digital Signature\n    Signature Algorithm: sha256WithRSAEncryption\n    Signature Value:\n        8f:af:c6:06:2b:28:78:d3:bf:24:3c:bf:e3:ab:08:32:a8:96:\n        10:c5:44:a0:29:ab:7f:5b:7d:36:46:32:2a:5d:b2:76:d9:c3:\n        8a:ef:19:34:8e:ac:28:fc:3b:ac:2a:1e:f9:88:a6:4a:b6:bd:\n        1d:b8:fe:25:89:ff:de:6f:02:1d:4a:5a:ec:14:49:d2:0b:a0:\n        da:bd:64:47:aa:86:79:39:61:87:4d:d3:4c:79:ea:c9:89:e8:\n        ed:b2:ad:ea:47:3a:93:70:da:09:e6:46:49:8a:f4:ee:2a:f9:\n        cf:f9:10:28:ef:6d:b5:a2:3e:62:7b:53:89:10:0c:eb:45:fe:\n        14:95:30:c4:d2:65:19:07:4f:4f:f7:57:14:ee:97:1e:b5:68:\n        c8:f5:02:d4:0d:77:8e:3f:ac:98:76:b5:4a:d0:ee:d0:d5:42:\n        7a:78:df:dd:38:22:85:54:f4:64:a4:79:e0:c1:42:bb:9c:99:\n        c8:7e:ba:25:3a:f6:89:25:f9:4d:44:c6:94:a7:07:f0:d2:c4:\n        2a:b4:db:2c:17:78:9e:70:37:9a:f7:0a:e0:5e:52:8c:0e:e1:\n        7b:ff:3c:97:d3:4a:26:74:9b:ff:09:58:88:0f:42:81:76:aa:\n        5e:24:c4:0d:2f:61:86:65:91:88:f1:65:21:5a:98:4d:c5:17:\n        38:e3:72:98\n-----BEGIN CERTIFICATE-----\nMIIFoTCCBImgAwIBAgIRAKlbVHggKHACbdOedTuuGE0wDQYJKoZIhvcNAQELBQAw\ngfUxCzAJBgNVBAYTAklUMRAwDgYDVQQIDAdUcmllc3RlMRAwDgYDVQQHDAdUcmll\nc3RlMTcwNQYDVQQKDC5TY2llbmNlIFRlY2hub2xvZ3kgYW5kIElubm92YXRpb24g\nVW5pdCBhdCBJQ1RQMS8wLQYDVQQLDCZNYXJjb25pIExhYiBNUVRUIENlcnRpZmlj\nYXRlIEF1dGhvcml0eTEvMC0GA1UEAwwmTWFyY29uaSBMYWIgTVFUVCBDZXJ0aWZp\nY2F0ZSBBdXRob3JpdHkxJzAlBgkqhkiG9w0BCQEWGHJ5dGlzLnBhc2thdXNrYXNA\naWN0cC5pdDAeFw0yNTA2MDYwOTU0MDhaFw0zMDA2MDUwOTU0MDhaMIHkMQswCQYD\nVQQGEwJJVDEQMA4GA1UECAwHVHJpZXN0ZTEQMA4GA1UEBwwHVHJpZXN0ZTE3MDUG\nA1UECgwuU2NpZW5jZSBUZWNobm9sb2d5IGFuZCBJbm5vdmF0aW9uIFVuaXQgYXQg\nSUNUUDEvMC0GA1UECwwmTWFyY29uaSBMYWIgTVFUVCBDZXJ0aWZpY2F0ZSBBdXRo\nb3JpdHkxHjAcBgNVBAMMFVVORVNDTy1UQi1pbnRlZ3JhdGlvbjEnMCUGCSqGSIb3\nDQEJARYYcnl0aXMucGFza2F1c2thc0BpY3RwLml0MIIBIjANBgkqhkiG9w0BAQEF\nAAOCAQ8AMIIBCgKCAQEAtr4UETWh2NBw/Rb35QK06zVWdaJ/ZqFYK+ZRkemB5vl4\nhhaaMx7tejJnUdJjAOm1LH92VpdddxJBdvZAIGvbYA82WiiFhnmcdCejAWoR9Faz\nONuiq19O1iU1e0PfT/QqD2CxF2v7fjTWrVRQ30a2P35IzmWq+5+bCfEGVVVJl2em\nnLsYrf4IwKNxJONfIzStNaOBNjK3lmqasU7jzvW8AJqQ2G7IJ4JjqDjWNMvbVPqb\nTOWyhxYP5I8br0KbqQ4nv0ZrDAwrL9spPwS/EV5ben14fQiIcSkFsdWfxP/vBRJB\nJ+vEJ7RhmgfIoDEBNl8GT/il+QA5akGzSuMx+OP0bwIDAQABo4IBOTCCATUwCQYD\nVR0TBAIwADAdBgNVHQ4EFgQUQjnOgJM6PO92Oav3LicBhnkCmvowgeYGA1UdIwSB\n3jCB24AUGg3RlmfQtg1V0iqeGZmHhW77WHChga+kgawwgakxCzAJBgNVBAYTAklU\nMRAwDgYDVQQHDAdUcmllc3RlMTcwNQYDVQQKDC5TY2llbmNlIFRlY2hub2xvZ3kg\nYW5kIElubm92YXRpb24gVW5pdCAtLSBJQ1RQMRQwEgYDVQQLDAtNYXJjb25pIExh\nYjEQMA4GA1UEAwwHUm9vdCBDQTEnMCUGCSqGSIb3DQEJARYYcnl0aXMucGFza2F1\nc2thc0BpY3RwLml0ghEA3MKApwBBB2KAq0MwnYqyCTATBgNVHSUEDDAKBggrBgEF\nBQcDAjALBgNVHQ8EBAMCB4AwDQYJKoZIhvcNAQELBQADggEBAI+vxgYrKHjTvyQ8\nv+OrCDKolhDFRKApq39bfTZGMipdsnbZw4rvGTSOrCj8O6wqHvmIpkq2vR24/iWJ\n/95vAh1KWuwUSdILoNq9ZEeqhnk5YYdN00x56smJ6O2yrepHOpNw2gnmRkmK9O4q\n+c/5ECjvbbWiPmJ7U4kQDOtF/hSVMMTSZRkHT0/3VxTulx61aMj1AtQNd44/rJh2\ntUrQ7tDVQnp43904IoVU9GSkeeDBQrucmch+uiU69okl+U1ExpSnB/DSxCq02ywX\neJ5wN5r3CuBeUowO4Xv/PJfTSiZ0m/8JWIgPQoF2ql4kxA0vYYZlkYjxZSFamE3F\nFzjjcpg=\n-----END CERTIFICATE-----\n",
+          "privateKeyFileName" : "UNESCO-TB-integration.key",
+          "privateKey" : "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC2vhQRNaHY0HD9\nFvflArTrNVZ1on9moVgr5lGR6YHm+XiGFpozHu16MmdR0mMA6bUsf3ZWl113EkF2\n9kAga9tgDzZaKIWGeZx0J6MBahH0VrM426KrX07WJTV7Q99P9CoPYLEXa/t+NNat\nVFDfRrY/fkjOZar7n5sJ8QZVVUmXZ6acuxit/gjAo3Ek418jNK01o4E2MreWapqx\nTuPO9bwAmpDYbsgngmOoONY0y9tU+ptM5bKHFg/kjxuvQpupDie/RmsMDCsv2yk/\nBL8RXlt6fXh9CIhxKQWx1Z/E/+8FEkEn68QntGGaB8igMQE2XwZP+KX5ADlqQbNK\n4zH44/RvAgMBAAECggEAM/lgvLpLw14ZXKo9LBm2ehUr934VjQuDh8zUU1Md+qLm\neACSr8pykWgngZp8RQSzXioMbrlTQGvlSZ/lAjOa67m35DGVNHd/G3wwfNT9sUg9\nZgT1wZb0Vay0hs/5ggR4N/Jwu7AfEbiWfCq4a6BxciKJM4av+CvfTRcLjZaZvSEm\nhU/vGMWaHB3Ewur31Pvm/g6Z+7+XoFobh7ESAb0m1YFHQgPlrIHvoY8ezv2a9pUH\nOLOa/J8F096sIL2zQDhR/PJfkMoknb9UXSrrtV9kKCJ763XymDbfnFXR8zP8vVdj\nGzbyTEDdNWUP5w62JZpp/VdCkNgp9/0xelSLaPtvHQKBgQDwb7WvbQA7AOcOnvjL\nkmjUl4WufhXPOAngMuezZPADH9KQzAtvMiUgjLQBEeXroYGtXSzr4BULlDsGfxcu\n/VnLXBsJ//aCs39UQeuK/N6xYohtE6mNQgbXeEAQfKogqilPKKLbZjl4LKyYUV4b\n6f99m6UkBnNjND/J0Eq7AiWhwwKBgQDCklGjOvPVkVDR1/07I11/mzsjbIE0Nchx\nyYq7DrGx5FuEM9EqBduPhKh9EhTtxNGii7tVuBwhBtmfA0ZPN/qDQG/3x1P1Ro4x\nrKjmZR4U/nNiqoyAr5cy8JZmgxWbIq/cCOJjuQ1K0Df6EBBAMb3YkpPhpX2n9W07\natCIFU+r5QKBgBVCm3smlUWiX8wALJm7mX9q4ow6Y+1N1Dm55pkLTNnJ35GkKUKs\n2XGWX3hUv9LlFhVhTs6QouvCMLHzXPZvupfrzgxFUOPfwVuO9Kf2ki53Ov8CJRTz\niK1W2btbeqOmyD5Spovl7yD8OkrBryOivk+6CpEz7NIR1a4ft+vvVaqHAoGAVg/a\nRFUDHWgVU3wx6kKOTK8gzV5lF+7iJlJ7JpotRv427Jbu4aONpkGLNScWUsVH5Jnh\n1tyEtKcPAyKzqr6b9ApAfFySal827gns+1umnqqd5vqBAzqnqkR4ggdhOylwl+bm\nHC3yDzFiUR1h0sMtsenDt383wV7xXeK1Mjwa7XECgYBeKRYK2hdX7TVvmVZWAltC\ndKbgU/Urpxm8hOFXUpHBsJPM2OWefYxYGSWn9qOvL2gOoY5fPmnhsBab1phA5b63\nsemCU0j2n2xkKf5KiPGIXwciC/eK+FRUfRpmtpcTmsHcL4gcfvPdb72V6cUzP9k2\npZ50K1ghzxE5sIMy62L7lQ==\n-----END PRIVATE KEY-----\n",
+          "privateKeyPassword" : ""
+        }
+      },
+      "topicFilters" : [ {
+        "filter" : "ws/#",
+        "qos" : 1
+      } ],
+      "downlinkTopicPattern" : "${topic}",
+      "metadata" : { }
+    },
+    "debugMode" : false,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1761485567926,
+      "failuresEnabled" : true
+    },
+    "defaultConverterId" : {
+      "entityType" : "CONVERTER",
+      "id" : "410ae870-9533-11f0-bcee-0d13c2de58fa"
+    },
+    "downlinkConverterId" : null,
+    "edgeTemplate" : false,
+    "enabled" : true,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "INTEGRATION",
+      "id" : "78366830-67d2-11f0-bafb-535d54e214ba"
+    },
+    "name" : "JOBURG ws to rxpk",
+    "remote" : false,
+    "routingKey" : "b351223d-9783-50d6-f37a-3ca9f40b7637",
+    "secret" : "n5jomwf9kq6sw26t7vqb",
+    "type" : "MQTT"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"success\":true}",
+      "key" : "integration_status_tb-node-0",
+      "lastUpdateTs" : 1761484669086,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}
