@@ -15,7 +15,7 @@
       "entityType" : "RULE_CHAIN",
       "id" : "ceaccd20-9532-11f0-bcee-0d13c2de58fa"
     },
-    "name" : "rxpk to assets",
+    "name" : "rxpk asset to devices",
     "root" : false,
     "type" : "CORE"
   },
