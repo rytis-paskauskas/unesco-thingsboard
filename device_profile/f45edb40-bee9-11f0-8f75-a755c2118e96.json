@@ -1,0 +1,43 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "98ec19c0-beea-11f0-8f75-a755c2118e96"
+    },
+    "description" : "Default device profile",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "f45edb40-bee9-11f0-8f75-a755c2118e96"
+    },
+    "image" : null,
+    "name" : "Barani MeteoRain",
+    "profileData" : {
+      "alarms" : null,
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
