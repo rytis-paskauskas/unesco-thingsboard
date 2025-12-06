@@ -1,0 +1,24 @@
+{
+  "entityType" : "ASSET_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "ceaccd20-9532-11f0-bcee-0d13c2de58fa"
+    },
+    "description" : "Default asset profile",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "396040a0-9535-11f0-bcee-0d13c2de58fa"
+    },
+    "image" : null,
+    "name" : "rxpk"
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
