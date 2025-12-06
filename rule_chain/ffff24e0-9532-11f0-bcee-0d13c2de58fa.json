@@ -21,6 +21,10 @@
   },
   "metaData" : {
     "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 20,
+      "type" : "Success"
+    }, {
       "fromIndex" : 2,
       "toIndex" : 1,
       "type" : "Post attributes"
@@ -658,6 +662,32 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1253,
+        "layoutY" : 674
+      },
+      "configuration" : {
+        "event" : "ACTIVITY_EVENT"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "4c816410-d2e4-11f0-8f75-a755c2118e96"
+      },
+      "name" : "Make it active",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbDeviceStateNode"
     } ],
     "ruleChainConnections" : null
   },
