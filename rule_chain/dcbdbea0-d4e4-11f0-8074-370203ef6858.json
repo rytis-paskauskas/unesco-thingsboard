@@ -26,7 +26,7 @@
       "type" : "Success"
     }, {
       "fromIndex" : 0,
-      "toIndex" : 20,
+      "toIndex" : 19,
       "type" : "Success"
     }, {
       "fromIndex" : 1,
@@ -94,32 +94,36 @@
       "type" : "Success"
     }, {
       "fromIndex" : 15,
-      "toIndex" : 25,
+      "toIndex" : 24,
       "type" : "Success"
     }, {
       "fromIndex" : 16,
       "toIndex" : 14,
       "type" : "True"
     }, {
-      "fromIndex" : 18,
-      "toIndex" : 19,
+      "fromIndex" : 17,
+      "toIndex" : 18,
       "type" : "Failure"
     }, {
-      "fromIndex" : 18,
-      "toIndex" : 26,
+      "fromIndex" : 17,
+      "toIndex" : 25,
       "type" : "Failure"
     }, {
+      "fromIndex" : 17,
+      "toIndex" : 25,
+      "type" : "Success"
+    }, {
       "fromIndex" : 18,
-      "toIndex" : 26,
+      "toIndex" : 25,
       "type" : "Success"
     }, {
       "fromIndex" : 19,
       "toIndex" : 26,
-      "type" : "Success"
+      "type" : "True"
     }, {
       "fromIndex" : 20,
       "toIndex" : 21,
-      "type" : "True"
+      "type" : "Success"
     }, {
       "fromIndex" : 21,
       "toIndex" : 22,
@@ -130,19 +134,23 @@
       "type" : "Success"
     }, {
       "fromIndex" : 23,
-      "toIndex" : 24,
+      "toIndex" : 17,
       "type" : "Success"
     }, {
-      "fromIndex" : 25,
-      "toIndex" : 18,
+      "fromIndex" : 24,
+      "toIndex" : 17,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 26,
+      "toIndex" : 20,
       "type" : "Success"
     } ],
     "firstNodeIndex" : 9,
     "nodes" : [ {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 1086,
-        "layoutY" : 99
+        "layoutX" : 1077,
+        "layoutY" : 153
       },
       "configuration" : {
         "defaultTTL" : 0
@@ -529,8 +537,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1721,
-        "layoutY" : 113
+        "layoutX" : 1752,
+        "layoutY" : 154
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -561,8 +569,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1727,
-        "layoutY" : 208
+        "layoutX" : 1752,
+        "layoutY" : 254
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -589,8 +597,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1405,
-        "layoutY" : 100
+        "layoutX" : 1402,
+        "layoutY" : 154
       },
       "configuration" : {
         "messageNames" : [ "frmPayload" ],
@@ -617,46 +625,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1063,
-        "layoutY" : 691
-      },
-      "configuration" : {
-        "originatorSource" : "RELATED",
-        "preserveOriginatorIfCustomer" : false,
-        "entityType" : null,
-        "entityNamePattern" : null,
-        "relationsQuery" : {
-          "fetchLastLevelOnly" : false,
-          "direction" : "FROM",
-          "maxLevel" : 1,
-          "filters" : [ {
-            "relationType" : "Contains",
-            "entityTypes" : [ "DEVICE" ]
-          } ]
-        }
-      },
-      "configurationVersion" : 1,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1765276256129,
-        "failuresEnabled" : true
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "dcdd0670-d4e4-11f0-8074-370203ef6858"
-      },
-      "name" : "to child",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 1734,
-        "layoutY" : 428
+        "layoutX" : 2105,
+        "layoutY" : 478
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -687,8 +657,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 2024,
-        "layoutY" : 433
+        "layoutX" : 2451,
+        "layoutY" : 477
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -715,8 +685,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1400,
-        "layoutY" : 34
+        "layoutX" : 1402,
+        "layoutY" : 53
       },
       "configuration" : {
         "messageNames" : [ "rx" ],
@@ -727,7 +697,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765286259044,
+        "allEnabledUntil" : 1765363068557,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -743,19 +713,19 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1717,
-        "layoutY" : 37
+        "layoutX" : 2102,
+        "layoutY" : 52
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var rx_new = [];\nif (msg.rx != null && msg.rx.length != null && msg.rx.length>0) {\n    for (var i=0; i< msg.rx.length; i++) {\n        var src = msg.rx[i];\n        // name the device\n        if (src.devName == null) {\n            if (src.mac != null ) {\n                src.put('devName', src.mac);\n                metadata.put('mac', src.mac);\n                src.remove('mac');\n            } // else if (other ways to name a device)\n        }\n        var dst = src;\n        src.tx = msg.tx;\n        rx_new.push(src);\n    }\n}\nreturn {msg: rx_new, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "var rx_new = [];\nif (msg.rx != null && msg.rx.length != null && msg.rx.length>0) {\n    for (var i=0; i< msg.rx.length; i++) {\n        var src = msg.rx[i];\n        // name the device\n        if (src.devName == null) {\n            if (src.mac != null ) {\n                src.put('devName', src.mac);\n                metadata.put('mac', src.mac);\n                src.remove('mac');\n            } // else if (other ways to name a device)\n        }\n        //var dst = src;\n        src.put(\"tx\", msg.tx);\n        //src.put(\"tx.name\", metadata.ss_devName);\n        //src.put(\"mqttTopic\", metadata.ss_topic);\n        rx_new.push(src);\n    }\n}\nreturn {msg: rx_new, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765283584002,
+        "allEnabledUntil" : 1765363616781,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -763,7 +733,7 @@
         "entityType" : "RULE_NODE",
         "id" : "198aa330-d4e9-11f0-8074-370203ef6858"
       },
-      "name" : "prep gw list",
+      "name" : "Gateway pipponistica",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -771,8 +741,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 2012,
-        "layoutY" : 38
+        "layoutX" : 2102,
+        "layoutY" : 154
       },
       "configuration" : {
         "version" : 0
@@ -789,16 +759,16 @@
         "entityType" : "RULE_NODE",
         "id" : "d7f71c90-d4e9-11f0-8074-370203ef6858"
       },
-      "name" : "splittsky",
+      "name" : "Splittsky",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbSplitArrayMsgNode"
     }, {
       "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 2004,
-        "layoutY" : 146
+        "description" : "Make and become your Baby Gateway",
+        "layoutX" : 2103,
+        "layoutY" : 253
       },
       "configuration" : {
         "direction" : "FROM",
@@ -814,7 +784,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765283584002,
+        "allEnabledUntil" : 1765362927914,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -822,7 +792,7 @@
         "entityType" : "RULE_NODE",
         "id" : "425ef630-d4ee-11f0-8074-370203ef6858"
       },
-      "name" : "make a gateway.",
+      "name" : "Baby Gateway",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -830,19 +800,19 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1995,
-        "layoutY" : 267
+        "layoutX" : 2104,
+        "layoutY" : 355
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var myMetadata = { \n    deviceName: msg.devName,\n    ts: metadata.ts,\n};\n\nvar myMsg = {\n    data: \"hello\"\n};\n\nreturn {msg: myMsg, metadata: myMetadata, msgType: msgType};"
+        "tbelScript" : "var myMsg = {};\nif (msg.rssi != null) {\n    myMsg.put(\"rssi\", msg.rssi);\n}\nif (msg.snr != null) {\n    myMsg.put(\"snr\", msg.snr);\n}\nif (msg.tx != null) {\n    myMsg.put(\"tx\", msg.tx);\n}\nif (metadata.ss_topic != null) {\n    myMsg.put(\"mqttTopic\", metadata.ss_topic);\n}\nif (metadata.ss_devName != null) {\n    myMsg.put(\"txName\", metadata.ss_devName);\n}\nmyMsg = toFlatMap(myMsg, true);\nvar myMetadata = { \n    deviceName: msg.devName,\n    deviceType: \"LoRaWAN Gateway\",\n    ts: metadata.ts,\n};\n\nreturn {msg: myMsg, metadata: myMetadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765283584002,
+        "allEnabledUntil" : 1765363589498,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -850,7 +820,7 @@
         "entityType" : "RULE_NODE",
         "id" : "834ce270-d4f7-11f0-8074-370203ef6858"
       },
-      "name" : "data -> device",
+      "name" : "Make telemetry",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -858,8 +828,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1726,
-        "layoutY" : 312
+        "layoutX" : 1752,
+        "layoutY" : 354
       },
       "configuration" : {
         "direction" : "FROM",
@@ -891,8 +861,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 2025,
-        "layoutY" : 586
+        "layoutX" : 2451,
+        "layoutY" : 354
       },
       "configuration" : {
         "forwardMsgToDefaultRuleChain" : true,
@@ -910,11 +880,43 @@
         "entityType" : "RULE_NODE",
         "id" : "e0d37250-d502-11f0-8074-370203ef6858"
       },
-      "name" : "Go get processed",
+      "name" : "Go to your Mamma",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1752,
+        "layoutY" : 52
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ ],
+        "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ "appName", "devName", "topic" ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1765363616781,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5ffeff00-d5b1-11f0-8074-370203ef6858"
+      },
+      "name" : "fetch attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
     } ],
     "ruleChainConnections" : null
   },
