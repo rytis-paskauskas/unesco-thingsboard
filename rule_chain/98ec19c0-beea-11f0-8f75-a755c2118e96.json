@@ -177,8 +177,8 @@
     "nodes" : [ {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 1741,
-        "layoutY" : 389
+        "layoutX" : 1679,
+        "layoutY" : 352
       },
       "configuration" : {
         "defaultTTL" : 0
@@ -187,7 +187,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1761640285093,
+        "allEnabledUntil" : 1765214575757,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -203,8 +203,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 1016,
-        "layoutY" : 647
+        "layoutX" : 1030,
+        "layoutY" : 703
       },
       "configuration" : {
         "scope" : "SERVER_SCOPE",
@@ -232,8 +232,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 403,
-        "layoutY" : 402
+        "layoutX" : 452,
+        "layoutY" : 354
       },
       "configuration" : {
         "version" : 0
@@ -337,8 +337,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 53,
-        "layoutY" : 403
+        "layoutX" : 52,
+        "layoutY" : 355
       },
       "configuration" : {
         "originatorTypes" : [ "ENTITY_GROUP" ]
@@ -363,8 +363,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 300,
-        "layoutY" : 239
+        "layoutX" : 253,
+        "layoutY" : 479
       },
       "configuration" : {
         "messageTypes" : [ "POST_ATTRIBUTES_REQUEST", "RPC_CALL_FROM_SERVER_TO_DEVICE" ]
@@ -389,8 +389,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 700,
-        "layoutY" : 158
+        "layoutX" : 505,
+        "layoutY" : 478
       },
       "configuration" : {
         "entityGroupId" : null,
@@ -416,8 +416,8 @@
     }, {
       "additionalInfo" : {
         "description" : "Process incoming messages from devices with the alarm rules defined in the device profile. Dispatch all incoming messages with \"Success\" relation type.",
-        "layoutX" : 53,
-        "layoutY" : 303
+        "layoutX" : 51,
+        "layoutY" : 255
       },
       "configuration" : {
         "persistAlarmRulesState" : false,
@@ -449,13 +449,13 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "// {\"data\": \"bxeAAqUtgAAAXf8=\", \"fport\": 1}\n// {\"data\": \"uQA4AATQ\",\"fport\": 1}\n// {\"deviceName\": \"2502LR003\",\"deviceType\": \"Barani MeteoRain\",\"ss_commonName\": \"2502LR003\",\"ts\":\"1763478171500\"}\n\n\nvar decoded = decodeToJson(\"{}\");\n\n\n// ---------- Stateful BitReader (MSB-first) for base64 payloads ----------\n// Keeps reading position between bitReader() calls within same script execution.\n\nvar __br_bytes = null;   // Uint8Array of payload bytes\nvar __br_bitPos = 0;     // Bit position within the stream\n\n// Initialize the reader with base64 payload string.\n// Returns total bits available.\nfunction bitReaderInit(b64) {\n    __br_bytes = base64ToBytes(b64);  // ThingsBoard TBEL built-in\n    __br_bitPos = 0;\n    return __br_bytes.length * 8;\n}\n\n// Read N bits from LEFT (MSB-first) and return as unsigned integer\nfunction bitReader(N) {\n    if (__br_bytes == null) {\n        throw \"bitReaderInit() must be called first.\";\n    }\n    if (N <= 0) return 0;\n\n    var totalBits = __br_bytes.length * 8;\n    if (__br_bitPos + N > totalBits) {\n        throw \"Not enough bits remaining: requested \" + N + \", available \" + (totalBits - __br_bitPos);\n    }\n\n    var value = 0;\n    for (var i = 0; i < N; i++) {\n        var bitIndex  = __br_bitPos;\n        var byteIndex = bitIndex >> 3;\n        var bitInByte = 7 - (bitIndex & 7);    // MSB-first\n        var byteVal   = __br_bytes[byteIndex];\n        var bit       = (byteVal >> bitInByte) & 1;\n\n        value = (value << 1) | bit;\n        __br_bitPos = __br_bitPos + 1;\n    }\n\n    return value >>> 0; // unsigned\n}\n\nfunction bitsRemaining() {\n    if (__br_bytes == null) return 0;\n    return __br_bytes.length * 8 - __br_bitPos;\n}\n\nfunction round1(x) {\n    return Math.round(x * 10) / 10.0;\n}\n\nfunction round2(x) {\n    return Math.round(x * 100) / 100.0;\n}\n\n// ==== main body ===\nvar totalBits = bitReaderInit(msg.data);\nvar index = bitReader(8);\nvar battery_bit = bitReader(1);\n// battery indicator\n\nvar rc = bitReader(12); // rain counter\nvar tim = bitReader(10);\nvar time_bt = 0.0;\nif (tim>0) {\n    time_bt = (728.0 / tim);\n    time_bt = time_bt*time_bt;\n}\nvar rcc = bitReader(12);\nvar temp = bitReader(1);\nvar debug = bitReader(1);\nvar rc_dif = rc - metadata.rc_last;\nif (rc_dif < 0) {\n    rc_dif += 4096;\n}\nvar rcc_dif = rcc - metadata.rcc_last;\nif (rcc_dif < 0) {\n    rcc_dif += 4096;\n}\n\nreturn {\n    msg: {\n        //type: type,\n        //batt: batt,\n        //bits: totalBits,\n        rc: rc,\n        rcc: rcc,\n        rct: time_bt\n        \n    },\n    metadata: metadata,\n    msgType: msgType\n};"
+        "tbelScript" : "// {\"data\": \"bxeAAqUtgAAAXf8=\", \"fport\": 1}\n// {\"data\": \"uQA4AATQ\",\"fport\": 1}\n// {\"deviceName\": \"2502LR003\",\"deviceType\": \"Barani MeteoRain\",\"ss_commonName\": \"2502LR003\",\"ts\":\"1763478171500\"}\n\n\nvar decoded = decodeToJson(\"{}\");\n\n\n// ---------- Stateful BitReader (MSB-first) for base64 payloads ----------\n// Keeps reading position between bitReader() calls within same script execution.\n\nvar __br_bytes = null;   // Uint8Array of payload bytes\nvar __br_bitPos = 0;     // Bit position within the stream\n\n// Initialize the reader with base64 payload string.\n// Returns total bits available.\nfunction bitReaderInit(b64) {\n    __br_bytes = base64ToBytes(b64);  // ThingsBoard TBEL built-in\n    __br_bitPos = 0;\n    return __br_bytes.length * 8;\n}\n\n// Read N bits from LEFT (MSB-first) and return as unsigned integer\nfunction bitReader(N) {\n    if (__br_bytes == null) {\n        throw \"bitReaderInit() must be called first.\";\n    }\n    if (N <= 0) return 0;\n\n    var totalBits = __br_bytes.length * 8;\n    if (__br_bitPos + N > totalBits) {\n        throw \"Not enough bits remaining: requested \" + N + \", available \" + (totalBits - __br_bitPos);\n    }\n\n    var value = 0;\n    for (var i = 0; i < N; i++) {\n        var bitIndex  = __br_bitPos;\n        var byteIndex = bitIndex >> 3;\n        var bitInByte = 7 - (bitIndex & 7);    // MSB-first\n        var byteVal   = __br_bytes[byteIndex];\n        var bit       = (byteVal >> bitInByte) & 1;\n\n        value = (value << 1) | bit;\n        __br_bitPos = __br_bitPos + 1;\n    }\n\n    return value >>> 0; // unsigned\n}\n\nfunction bitsRemaining() {\n    if (__br_bytes == null) return 0;\n    return __br_bytes.length * 8 - __br_bitPos;\n}\n\nfunction round1(x) {\n    return Math.round(x * 10) / 10.0;\n}\n\nfunction round2(x) {\n    return Math.round(x * 100) / 100.0;\n}\n\n// ==== main body ===\nvar totalBits = bitReaderInit(msg.data);\nvar index = bitReader(8);\nvar battery_bit = bitReader(1);\n// battery indicator\n\nvar rc = bitReader(12); // rain counter\nvar tim = bitReader(10);\nvar time_bt = 0.0;\nif (tim>0) {\n    time_bt = (728.0 / tim);\n    time_bt = time_bt*time_bt;\n}\nvar rcc = bitReader(12);\nvar temp = bitReader(1);\nvar debug = bitReader(1);\n//var rc_dif = rc - metadata.rc_last;\n//if (rc_dif < 0) {\n//    rc_dif += 4096;\n//}\n//var rcc_dif = rcc - metadata.rcc_last;\n//if (rcc_dif < 0) {\n//    rcc_dif += 4096;\n//}\n\nreturn {\n    msg: {\n        //type: type,\n        //batt: batt,\n        //bits: totalBits,\n        rc: rc,\n        rcc: rcc,\n        rct: time_bt\n        \n    },\n    metadata: metadata,\n    msgType: msgType\n};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764495924756,
+        "allEnabledUntil" : 1766998970375,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -483,7 +483,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1761643286974,
+        "allEnabledUntil" : 1765214726907,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -527,8 +527,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1731,
-        "layoutY" : 227
+        "layoutX" : 1677,
+        "layoutY" : 253
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -539,7 +539,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764367194837,
+        "allEnabledUntil" : 1766999282565,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -555,8 +555,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1734,
-        "layoutY" : 542
+        "layoutX" : 1677,
+        "layoutY" : 455
       },
       "configuration" : {
         "event" : "ACTIVITY_EVENT"
@@ -581,8 +581,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 69,
-        "layoutY" : 624
+        "layoutX" : 72,
+        "layoutY" : 706
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -613,8 +613,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 389,
-        "layoutY" : 621
+        "layoutX" : 421,
+        "layoutY" : 704
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -641,8 +641,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1096,
-        "layoutY" : 18
+        "layoutX" : 902,
+        "layoutY" : 129
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -657,7 +657,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764495817909,
+        "allEnabledUntil" : 1766998970375,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -673,8 +673,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 246,
-        "layoutY" : 537
+        "layoutX" : 5,
+        "layoutY" : 605
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -701,13 +701,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 503,
-        "layoutY" : 536
+        "layoutX" : 429,
+        "layoutY" : 599
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "msg={'slope':0.01, 'intercept':0.0};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n"
+        "tbelScript" : "msg={'slope':0.2, 'intercept':0.0};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -729,19 +729,19 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1079,
-        "layoutY" : 193
+        "layoutX" : 1027,
+        "layoutY" : 254
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var r = 0.0;\nvar dif1 = 0;\nvar dif2 = 0;\nif (metadata.ss_rc != null) {\n    dif1 = msg.rc - metadata.ss_rc;\n    if (dif1 < 0) dif1 += 4096;\n}\n\nif (metadata.ss_rcc != null) {\n    dif2 = msg.rcc - metadata.ss_rcc;\n    if (dif2 < 0) dif2 += 4096;\n}\n\nmsg.r = dif1 + 0.01*dif2;\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "var r = 0.0;\nvar dif1 = 0.0;\nvar dif2 = 0.0;\nif ((metadata.ss_rc != null) && (msg.rc!=metadata.ss_rc)) {\n    dif1 = msg.rc - metadata.ss_rc;\n    if (dif1 < 0) dif1 += 4096;\n}\n\nif ((metadata.ss_rcc != null) && (msg.rcc!=metadata.ss_rcc)) {\n    dif2 = msg.rcc - metadata.ss_rcc;\n    if (dif2 < 0) dif2 += 4096;\n}\n\nmsg.r = 1.0*dif1 + 0.01*dif2;\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764495817909,
+        "allEnabledUntil" : 1766998907997,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -757,7 +757,7 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1015,
+        "layoutX" : 1025,
         "layoutY" : 355
       },
       "configuration" : {
@@ -769,7 +769,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764495855790,
+        "allEnabledUntil" : 1765214305926,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -785,8 +785,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1025,
-        "layoutY" : 469
+        "layoutX" : 1028,
+        "layoutY" : 455
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -813,8 +813,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1339,
-        "layoutY" : 349
+        "layoutX" : 1328,
+        "layoutY" : 353
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -825,7 +825,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764495855790,
+        "allEnabledUntil" : 1765214305926,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -841,8 +841,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1313,
-        "layoutY" : 444
+        "layoutX" : 1327,
+        "layoutY" : 454
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -869,8 +869,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1398,
-        "layoutY" : 69
+        "layoutX" : 1325,
+        "layoutY" : 128
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -885,7 +885,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 0,
+        "allEnabledUntil" : 1766999341977,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -901,19 +901,19 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1737,
-        "layoutY" : 82
+        "layoutX" : 1676,
+        "layoutY" : 130
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "function round4(x) {\n    return Math.round(x * 10000) / 10000.0;\n}\n\nif (metadata.ss_slope != null && metadata.ss_intercept != null) {\n    msg.r = round4(metadata.ss_slope*msg.r + metadata.ss_intercept);\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "function round4(x) {\n    return Math.round(x * 10000.0) / 10000.0;\n}\n\nif (metadata.ss_slope != null && metadata.ss_intercept != null) {\n    msg.r = round4((metadata.ss_slope*msg.r) + metadata.ss_intercept);\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764536669366,
+        "allEnabledUntil" : 1766999323024,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -929,8 +929,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1407,
-        "layoutY" : 188
+        "layoutX" : 1325,
+        "layoutY" : 252
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -941,7 +941,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1764536691574,
+        "allEnabledUntil" : 1766999044687,
         "failuresEnabled" : false
       },
       "externalId" : null,
