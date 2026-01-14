@@ -203,8 +203,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 1030,
-        "layoutY" : 703
+        "layoutX" : 1026,
+        "layoutY" : 702
       },
       "configuration" : {
         "scope" : "SERVER_SCOPE",
@@ -232,8 +232,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 452,
-        "layoutY" : 354
+        "layoutX" : 427,
+        "layoutY" : 353
       },
       "configuration" : {
         "version" : 0
@@ -257,8 +257,8 @@
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 645,
-        "layoutY" : 89
+        "layoutX" : 301,
+        "layoutY" : 80
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -284,8 +284,8 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 366,
-        "layoutY" : 54
+        "layoutX" : 777,
+        "layoutY" : 4
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -311,8 +311,8 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 609,
-        "layoutY" : 21
+        "layoutX" : 251,
+        "layoutY" : 3
       },
       "configuration" : {
         "timeoutInSeconds" : 60
@@ -363,8 +363,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 253,
-        "layoutY" : 479
+        "layoutX" : 252,
+        "layoutY" : 501
       },
       "configuration" : {
         "messageTypes" : [ "POST_ATTRIBUTES_REQUEST", "RPC_CALL_FROM_SERVER_TO_DEVICE" ]
@@ -389,8 +389,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 505,
-        "layoutY" : 478
+        "layoutX" : 499,
+        "layoutY" : 503
       },
       "configuration" : {
         "entityGroupId" : null,
@@ -443,8 +443,8 @@
     }, {
       "additionalInfo" : {
         "description" : "\nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
-        "layoutX" : 778,
-        "layoutY" : 249
+        "layoutX" : 777,
+        "layoutY" : 254
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -455,7 +455,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1766998970375,
+        "allEnabledUntil" : 1768394715936,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -613,8 +613,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 421,
-        "layoutY" : 704
+        "layoutX" : 427,
+        "layoutY" : 703
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -701,8 +701,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 429,
-        "layoutY" : 599
+        "layoutX" : 426,
+        "layoutY" : 604
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -729,19 +729,19 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1027,
+        "layoutX" : 1024,
         "layoutY" : 254
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var r = 0.0;\nvar dif1 = 0.0;\nvar dif2 = 0.0;\nif ((metadata.ss_rc != null) && (msg.rc!=metadata.ss_rc)) {\n    dif1 = msg.rc - metadata.ss_rc;\n    if (dif1 < 0) dif1 += 4096;\n}\n\nif ((metadata.ss_rcc != null) && (msg.rcc!=metadata.ss_rcc)) {\n    dif2 = msg.rcc - metadata.ss_rcc;\n    if (dif2 < 0) dif2 += 4096;\n}\n\nmsg.r = 1.0*dif1 + 0.01*dif2;\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "var r = 0.0;\nvar dif1 = 0.0;\nvar dif2 = 0.0;\nif ((metadata.ss_rc != null) && (msg.rc!=metadata.ss_rc)) {\n    dif1 = msg.rc - java.lang.Integer.parseInt(metadata.ss_rc);\n    if (dif1 < 0) dif1 += 4096;\n}\n\nif ((metadata.ss_rcc != null) && (msg.rcc!=metadata.ss_rcc)) {\n    dif2 = msg.rcc - java.lang.Integer.parseInt(metadata.ss_rcc);\n    if (dif2 < 0) dif2 += 4096;\n}\n\nmsg.r = 1.0*dif1 + 0.01*dif2;\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1766998907997,
+        "allEnabledUntil" : 1768394576441,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -907,13 +907,13 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "function round4(x) {\n    return Math.round(x * 10000.0) / 10000.0;\n}\n\nif (metadata.ss_slope != null && metadata.ss_intercept != null) {\n    msg.r = round4((metadata.ss_slope*msg.r) + metadata.ss_intercept);\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "function round3(x) {\n    return Math.round(x * 1000.0) / 1000.0;\n}\n\nif (metadata.ss_slope != null && metadata.ss_intercept != null) {\n    msg.r = round3((java.lang.Double.parseDouble(metadata.ss_slope)*msg.r) + java.lang.Double.parseDouble(metadata.ss_intercept));\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1766999323024,
+        "allEnabledUntil" : 1768394694220,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -941,7 +941,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1766999044687,
+        "allEnabledUntil" : 1768394611569,
         "failuresEnabled" : false
       },
       "externalId" : null,
