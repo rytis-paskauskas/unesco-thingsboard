@@ -42,11 +42,11 @@
       "type" : "RPC Request to Device"
     }, {
       "fromIndex" : 2,
-      "toIndex" : 10,
+      "toIndex" : 11,
       "type" : "Post telemetry"
     }, {
       "fromIndex" : 2,
-      "toIndex" : 11,
+      "toIndex" : 28,
       "type" : "Post telemetry"
     }, {
       "fromIndex" : 6,
@@ -172,13 +172,17 @@
       "fromIndex" : 27,
       "toIndex" : 25,
       "type" : "True"
+    }, {
+      "fromIndex" : 28,
+      "toIndex" : 10,
+      "type" : "True"
     } ],
     "firstNodeIndex" : 9,
     "nodes" : [ {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 1679,
-        "layoutY" : 352
+        "layoutX" : 1929,
+        "layoutY" : 354
       },
       "configuration" : {
         "defaultTTL" : 0
@@ -443,8 +447,8 @@
     }, {
       "additionalInfo" : {
         "description" : "\nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
-        "layoutX" : 778,
-        "layoutY" : 249
+        "layoutX" : 1028,
+        "layoutY" : 251
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -455,7 +459,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1768383071016,
+        "allEnabledUntil" : 1768470217159,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -463,7 +467,7 @@
         "entityType" : "RULE_NODE",
         "id" : "683b3871-f08a-11f0-8074-370203ef6858"
       },
-      "name" : "decode base64",
+      "name" : "decode b64",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -471,8 +475,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 778,
-        "layoutY" : 353
+        "layoutX" : 1028,
+        "layoutY" : 355
       },
       "configuration" : {
         "messageNames" : [ "attributes" ],
@@ -499,8 +503,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 779,
-        "layoutY" : 458
+        "layoutX" : 1029,
+        "layoutY" : 460
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -527,8 +531,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1677,
-        "layoutY" : 253
+        "layoutX" : 1927,
+        "layoutY" : 255
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -555,8 +559,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1677,
-        "layoutY" : 455
+        "layoutX" : 1927,
+        "layoutY" : 457
       },
       "configuration" : {
         "event" : "ACTIVITY_EVENT"
@@ -641,8 +645,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 902,
-        "layoutY" : 129
+        "layoutX" : 1152,
+        "layoutY" : 131
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -729,8 +733,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1024,
-        "layoutY" : 254
+        "layoutX" : 1276,
+        "layoutY" : 253
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -741,7 +745,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1768383071016,
+        "allEnabledUntil" : 1768470217159,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -757,8 +761,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1025,
-        "layoutY" : 355
+        "layoutX" : 1275,
+        "layoutY" : 357
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -785,8 +789,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1028,
-        "layoutY" : 455
+        "layoutX" : 1278,
+        "layoutY" : 457
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -813,8 +817,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1328,
-        "layoutY" : 353
+        "layoutX" : 1578,
+        "layoutY" : 355
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -841,8 +845,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1327,
-        "layoutY" : 454
+        "layoutX" : 1577,
+        "layoutY" : 456
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -869,8 +873,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1325,
-        "layoutY" : 128
+        "layoutX" : 1575,
+        "layoutY" : 130
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -901,8 +905,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1676,
-        "layoutY" : 130
+        "layoutX" : 1926,
+        "layoutY" : 132
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -913,7 +917,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1768383084652,
+        "allEnabledUntil" : 1768470217159,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -929,8 +933,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1325,
-        "layoutY" : 252
+        "layoutX" : 1575,
+        "layoutY" : 254
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -941,7 +945,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1768383071016,
+        "allEnabledUntil" : 1768470217159,
         "failuresEnabled" : false
       },
       "externalId" : null,
@@ -950,6 +954,34 @@
         "id" : "683bfbc0-f08a-11f0-8074-370203ef6858"
       },
       "name" : "have rainfall?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 727,
+        "layoutY" : 251
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.fPort == 1;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1768473482172,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "4c8c3030-f1f6-11f0-8074-370203ef6858"
+      },
+      "name" : "periodic frmPayload?",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
