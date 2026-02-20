@@ -153,13 +153,16 @@
         "layoutY" : 153
       },
       "configuration" : {
-        "defaultTTL" : 0
+        "defaultTTL" : 0,
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        }
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 1,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765522463231,
+        "allEnabledUntil" : 1771584073934,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -181,14 +184,17 @@
       "configuration" : {
         "scope" : "SERVER_SCOPE",
         "notifyDevice" : false,
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
         "sendAttributesUpdatedNotification" : false,
         "updateAttributesOnlyOnValueChange" : false
       },
-      "configurationVersion" : 2,
+      "configurationVersion" : 3,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765283719977,
+        "allEnabledUntil" : 1771584094717,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -214,7 +220,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765289222763,
+        "allEnabledUntil" : 1771583989658,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -455,7 +461,7 @@
         "entityType" : "DEVICE",
         "entityNamePattern" : "$[devName]",
         "entityTypePattern" : "$[appName]",
-        "relationType" : "Contains",
+        "relationType" : "Manages",
         "createEntityIfNotExists" : true,
         "removeCurrentRelations" : false,
         "changeOriginatorToRelatedEntity" : true
@@ -609,7 +615,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765533418187,
+        "allEnabledUntil" : 1771584007355,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -697,7 +703,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765363068557,
+        "allEnabledUntil" : 1771584007355,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -775,7 +781,7 @@
         "entityType" : "DEVICE",
         "entityNamePattern" : "$[devName]",
         "entityTypePattern" : "LoRaWAN Gateway",
-        "relationType" : "Contains",
+        "relationType" : "Manages",
         "createEntityIfNotExists" : true,
         "removeCurrentRelations" : false,
         "changeOriginatorToRelatedEntity" : true
@@ -836,7 +842,7 @@
         "entityType" : "DEVICE",
         "entityNamePattern" : "${deviceName}",
         "entityTypePattern" : "${deviceType}",
-        "relationType" : "Contains",
+        "relationType" : "Manages",
         "createEntityIfNotExists" : true,
         "removeCurrentRelations" : false,
         "changeOriginatorToRelatedEntity" : true
