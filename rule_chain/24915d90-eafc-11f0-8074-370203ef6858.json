@@ -498,7 +498,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765283186547,
+        "allEnabledUntil" : 1771592234981,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -703,7 +703,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771584007355,
+        "allEnabledUntil" : 1771594296397,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -731,7 +731,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1769162456421,
+        "allEnabledUntil" : 1771593174885,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -757,7 +757,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1769162456421,
+        "allEnabledUntil" : 1771593174885,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -812,13 +812,13 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var myMsg = {};\nif (msg.rssi != null) {\n    myMsg.put(\"rssi\", msg.rssi);\n}\nif (msg.snr != null) {\n    myMsg.put(\"snr\", msg.snr);\n}\nif (msg.tx != null) {\n    myMsg.put(\"tx\", msg.tx);\n}\nif (metadata.ss_topic != null) {\n    myMsg.put(\"mqttTopic\", metadata.ss_topic);\n}\nif (metadata.ss_devName != null) {\n    myMsg.put(\"txName\", metadata.ss_devName);\n}\nmyMsg = toFlatMap(myMsg, true);\nvar myMetadata = { \n    deviceName: msg.devName,\n    deviceType: \"LoRaWAN Gateway\",\n    ts: metadata.ts,\n};\n\nreturn {msg: myMsg, metadata: myMetadata, msgType: msgType};"
+        "tbelScript" : "var myMsg = {};\nif (msg.rssi != null) {\n    myMsg.put(\"rssi\", msg.rssi);\n}\nif (msg.snr != null) {\n    myMsg.put(\"snr\", msg.snr);\n}\nif (msg.tx != null) {\n    myMsg.put(\"tx\", msg.tx);\n}\n// Example topic: LAB/devices/0004a30b01006777/up\nif (metadata.ss_topic != null) {\n    var wrd = metadata.ss_topic.split('/');\n    if (wrd.length>=3 && wrd[wrd.length-3]==\"devices\") {\n        myMsg.put(\"tx.EUI\", wrd[wrd.length-2].toUpperCase());\n        if (wrd.length>3) {\n            myMsg.put(\"tx.Group\", wrd[wrd.length-4]);\n        }\n    }\n    // myMsg.put(\"mqttTopic\", metadata.ss_topic);\n}\nif (metadata.ss_devName != null) {\n    myMsg.put(\"tx.Name\", metadata.ss_devName);\n}\nmyMsg = toFlatMap(myMsg, true);\nvar myMetadata = { \n    deviceName: msg.devName,\n    deviceType: \"LoRaWAN Gateway\",\n    ts: metadata.ts,\n};\n\nreturn {msg: myMsg, metadata: myMetadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1769162438314,
+        "allEnabledUntil" : 1771594296397,
         "failuresEnabled" : true
       },
       "externalId" : null,
