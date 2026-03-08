@@ -1,0 +1,521 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Author: Rytis Paškauskas"
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "8acc2b80-0d7f-11f1-a387-c9cb240000d9"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "8aa087a0-0d7f-11f1-a387-c9cb240000d9"
+    },
+    "name" : "Milesight FT101 decoder",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 2,
+      "toIndex" : 1,
+      "type" : "Post attributes"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "RPC Request from Device"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 4,
+      "type" : "Other"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 5,
+      "type" : "RPC Request to Device"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 11,
+      "type" : "Post telemetry"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 2,
+      "type" : "False"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 7,
+      "type" : "True"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 2,
+      "type" : "False"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 8,
+      "type" : "True"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 6,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 12,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 14,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 10,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 10,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 13,
+      "type" : "True"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 1,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 14,
+      "toIndex" : 0,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 9,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 1126,
+        "layoutY" : 204
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        }
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756217942610,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acaa4e0-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Save Timeseries",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 801,
+        "layoutY" : 401
+      },
+      "configuration" : {
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : false
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756217890741,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acb1a10-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Save Attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 400,
+        "layoutY" : 353
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756216607317,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acb4120-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Message Type Switch",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 802,
+        "layoutY" : 503
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acb8f40-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Log RPC from Device",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 802,
+        "layoutY" : 604
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acb8f41-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Log Other",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 804,
+        "layoutY" : 704
+      },
+      "configuration" : {
+        "timeoutInSeconds" : 60
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acbb650-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "RPC Call Request",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 49,
+        "layoutY" : 355
+      },
+      "configuration" : {
+        "originatorTypes" : [ "ENTITY_GROUP" ]
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acbdd60-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Is Entity Group",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbOriginatorTypeFilterNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 51,
+        "layoutY" : 455
+      },
+      "configuration" : {
+        "messageTypes" : [ "POST_ATTRIBUTES_REQUEST", "RPC_CALL_FROM_SERVER_TO_DEVICE" ]
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acc0470-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Post attributes or RPC request",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeFilterNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 399,
+        "layoutY" : 453
+      },
+      "configuration" : {
+        "entityGroupId" : null,
+        "entityGroupIsMessageOriginator" : true
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acc0471-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Duplicate To Group Entities",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbDuplicateMsgToGroupNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Process incoming messages from devices with the alarm rules defined in the device profile. Dispatch all incoming messages with \"Success\" relation type.",
+        "layoutX" : 49,
+        "layoutY" : 253
+      },
+      "configuration" : {
+        "persistAlarmRulesState" : false,
+        "fetchAlarmRulesStateOnStart" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acc2b80-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Device Profile Node",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.profile.TbDeviceProfileNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "2025-08-14 Rytis: Milesight FT101 default decoder. \nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
+        "layoutX" : 799,
+        "layoutY" : 101
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// Time-stamp: <2025-08-26 11:27:18 rytis>\n// Made with love by Rytis.\n// Adapted after: https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\nvar RAW_VALUE = 0x00;\nvar b64   = msg.data;\nvar bytes = base64ToBytes(b64);\nvar decoded = decodeToJson(\"{}\");\nvar attributes = decodeToJson(\"{}\");\n\nfunction u8(idx)           { return (bytes[idx] & 0xFF); }\n//function i8(idx)           { var v = u8(idx); return (v > 0x7F) ? v - 256 : v; }\nfunction readUInt16LE(i)   { return (u8(i)) | (u8(i+1) << 8); }\nfunction readInt16LE(i)    { var v = readUInt16LE(i); return (v >= 0x8000) ? v - 0x10000 : v; }\nfunction readUInt32LE(i)   { var v = (u8(i)) | (u8(i+1)<<8) | (u8(i+2)<<16) | (u8(i+3)<<24); return (v >>> 0); }\nfunction readInt32LE(i)    { var u = readUInt32LE(i); return (u > 0x7FFFFFFF) ? (u - 0x100000000) : u; }\nfunction hex2(n)           { var h = (n & 0xFF).toString(16); var t = \"0\" + h; return  t.substring(t.length() - 2); }\nfunction readHexStringAt(i,len){ var out=[]; var k=0; while(k<len){ out.push(hex2(u8(i+k))); k++; } return out.join(\"\"); }\nfunction readProtocolVersionAt(i){\n    var b=u8(i); var major=(b & 0xF0)>>4; var minor=b & 0x0F; return \"v\"+major+\".\"+minor;\n}\nfunction readHardwareVersionAt(i){\n    var major=u8(i); var minor=(u8(i+1) >> 4); return \"v\"+major+\".\"+minor;\n}\nfunction readFirmwareVersionAt(i){\n    var major=u8(i); var minor=u8(i+1); return \"v\"+major+\".\"+minor;\n}\nfunction readTslVersionAt(i){\n    var major=u8(i); var minor=u8(i+1); return \"v\"+major+\".\"+minor;\n}\nfunction readSerialNumberAt(i,len){ return readHexStringAt(i,len); }\nfunction getValue(map, key){\n    if (RAW_VALUE == 0) return key;\n    var v = map[key];\n    if (v == null) v = \"unknown\";\n    return v;\n}\nfunction readLoRaWANClass(t){\n    var m = {0:\"Class A\",1:\"Class B\",2:\"Class C\",3:\"Class CtoB\"};\n    return getValue(m, t);\n}\nfunction readDeviceStatus(b){\n    var m = {1:\"on\", 0:\"off\"};\n    return getValue(m, b);\n}\n//function toNumOr(x, dflt) {\n//    if (x == null) return dflt;\n//    var n = x * 1;\n//    if (n != n) return dflt;   // NaN check (NaN != NaN)\n//    return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n//}\nfunction stringToNumOr(x, dflt) {\n    if (x == null) return dflt;\n    //var inner = decodeToJson(x);\n    var n = decodeToJson(x);\n    return java.lang.Integer.parseInt(n);\n    //    if (n != n) return dflt;   // NaN check (NaN != NaN)\n    //  return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n}\n\nvar counter = stringToNumOr(metadata.rttc, 0);\n\nif (bytes != null && bytes.size() == 1 && ((bytes[0] & 0xFF) == 0xFF)) {\n    //counter = toNumOr(metadata.rttc, 0) + 1;\n    //metadata.put(\"rttc\", counter);\n    counter = counter + 1;\n    decoded.put(\"rttc\", counter);\n} else {\n    var i = 0;\n    //attrs.put(\"rttc\", 0);\n    decoded.put(\"rttc\", 0);\n    while (i < bytes.size()) {\n\tvar channel_id   = u8(i++);\n\tvar channel_type = u8(i++);\n\n\t// IPSO VERSION\n\tif (channel_id == 0xFF && channel_type == 0x01) {\n        //decoded.ipso_version = readProtocolVersionAt(i);\n\t    attributes.ipso_version = readProtocolVersionAt(i);\n\t    i += 1;\n\n\t    // HARDWARE VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0x09) {\n\t    //decoded.hardware_version = readHardwareVersionAt(i);\n\t    attributes.hardware_version = readHardwareVersionAt(i);\n\t    i += 2;\n\n\t    // FIRMWARE VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0x0A) {\n\t    //decoded.firmware_version = readFirmwareVersionAt(i);\n\t    attributes.firmware_version = readFirmwareVersionAt(i);\n\t    i += 2;\n\n\t    // DEVICE STATUS\n\t} else if (channel_id == 0xFF && channel_type == 0x0B) {\n\t    //decoded.device_status = readDeviceStatus(1);\n\t    attributes.device_status = readDeviceStatus(1);\n\t    i += 1;\n\n\t    // LORAWAN CLASS\n\t} else if (channel_id == 0xFF && channel_type == 0x0F) {\n\t    decoded.lorawan_class = readLoRaWANClass(u8(i));\n\t    i += 1;\n\n\t    // PRODUCT SERIAL NUMBER (8 bytes)\n\t} else if (channel_id == 0xFF && channel_type == 0x16) {\n        //decoded.sn = readSerialNumberAt(i, 8);\n        attributes.sn = readSerialNumberAt(i, 8);\n\t    i += 8;\n\n\t    // TSL VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0xFF) {\n\t    //decoded.tsl_version = readTslVersionAt(i);\n\t    attributes.tsl_version = readTslVersionAt(i);\n\t    i += 2;\n\n\t    // LOCATION (lon, lat) each int32, 1e6 scale\n\t} else if (channel_id == 0x03 && channel_type == 0xA1) {\n\t    decoded.longitude = readInt32LE(i) / 1000000.0;\n\t    decoded.latitude  = readInt32LE(i + 4) / 1000000.0;\n\t    i += 8;\n\n\t    // SIGNAL STRENGTH (RSSI, SNR) each int16, 0.1 scale\n\t} else if (channel_id == 0x04 && channel_type == 0xA2) {\n\t    decoded.rssi = readInt16LE(i) / 10.0;\n\t    decoded.snr  = readInt16LE(i + 2) / 10.0;\n\t    i += 4;\n\n\t    // SF (spreading factor) – 1 byte\n\t} else if (channel_id == 0x05 && channel_type == 0xA3) {\n\t    decoded.sf = u8(i);\n\t    i += 1;\n\n\t    // TX POWER (int16, 0.01 scale)\n\t} else if (channel_id == 0x06 && channel_type == 0xA4) {\n\t    decoded.tx_power = readInt16LE(i) / 100.0;\n\t    i += 2;\n\n\t} else {\n\t    break;\n\t}\n    }\n\n}\n\nif (decoded.rttc == 0 && decoded.latitude != null && decoded.longitude != null) {\n    attributes.put(\"latitude\", decoded.latitude);\n    attributes.put(\"longitude\", decoded.longitude);\n}\n\nif (attributes.size() > 0) {\n    decoded.put(\"attributes\", attributes);\n}\n\nreturn { msg: decoded, metadata: metadata, msgType: msgType };"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756217857413,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acca0b0-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "decode base64",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 802,
+        "layoutY" : 0
+      },
+      "configuration" : {
+        "latestTsKeyNames" : [ "rttc" ],
+        "aggregation" : "NONE",
+        "fetchMode" : "LAST",
+        "orderBy" : "ASC",
+        "limit" : 1000,
+        "useMetadataIntervalPatterns" : false,
+        "startIntervalPattern" : "",
+        "endIntervalPattern" : "",
+        "startInterval" : 2,
+        "startIntervalTimeUnit" : "HOURS",
+        "endInterval" : 1,
+        "endIntervalTimeUnit" : "SECONDS"
+      },
+      "configurationVersion" : 2,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756214473456,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8accc7c0-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "last counter value",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetTelemetryNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 801,
+        "layoutY" : 203
+      },
+      "configuration" : {
+        "messageNames" : [ "attributes" ],
+        "metadataNames" : [ ],
+        "checkAllKeys" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756217350217,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acceed0-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "got attribute data?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 802,
+        "layoutY" : 301
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "msg = msg.attributes;\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756217363094,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acd15e0-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "prepare attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1125,
+        "layoutY" : 101
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "if (msg.attributes != null) {\n    msg.remove(\"attributes\");\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756217942610,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8acd15e1-0d7f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "prepare telemetry",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
