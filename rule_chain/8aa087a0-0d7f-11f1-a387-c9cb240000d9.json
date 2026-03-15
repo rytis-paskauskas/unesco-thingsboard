@@ -21,6 +21,10 @@
   },
   "metaData" : {
     "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 19,
+      "type" : "Success"
+    }, {
       "fromIndex" : 2,
       "toIndex" : 1,
       "type" : "Post attributes"
@@ -90,6 +94,30 @@
       "type" : "Success"
     }, {
       "fromIndex" : 14,
+      "toIndex" : 15,
+      "type" : "True"
+    }, {
+      "fromIndex" : 14,
+      "toIndex" : 16,
+      "type" : "False"
+    }, {
+      "fromIndex" : 14,
+      "toIndex" : 18,
+      "type" : "True"
+    }, {
+      "fromIndex" : 15,
+      "toIndex" : 1,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 17,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 17,
+      "toIndex" : 18,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 18,
       "toIndex" : 0,
       "type" : "Success"
     } ],
@@ -97,8 +125,8 @@
     "nodes" : [ {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 1126,
-        "layoutY" : 204
+        "layoutX" : 1408,
+        "layoutY" : 425
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -126,8 +154,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 801,
-        "layoutY" : 401
+        "layoutX" : 1103,
+        "layoutY" : 352
       },
       "configuration" : {
         "scope" : "SERVER_SCOPE",
@@ -372,7 +400,7 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "// Time-stamp: <2025-08-26 11:27:18 rytis>\n// Made with love by Rytis.\n// Adapted after: https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\nvar RAW_VALUE = 0x00;\nvar b64   = msg.data;\nvar bytes = base64ToBytes(b64);\nvar decoded = decodeToJson(\"{}\");\nvar attributes = decodeToJson(\"{}\");\n\nfunction u8(idx)           { return (bytes[idx] & 0xFF); }\n//function i8(idx)           { var v = u8(idx); return (v > 0x7F) ? v - 256 : v; }\nfunction readUInt16LE(i)   { return (u8(i)) | (u8(i+1) << 8); }\nfunction readInt16LE(i)    { var v = readUInt16LE(i); return (v >= 0x8000) ? v - 0x10000 : v; }\nfunction readUInt32LE(i)   { var v = (u8(i)) | (u8(i+1)<<8) | (u8(i+2)<<16) | (u8(i+3)<<24); return (v >>> 0); }\nfunction readInt32LE(i)    { var u = readUInt32LE(i); return (u > 0x7FFFFFFF) ? (u - 0x100000000) : u; }\nfunction hex2(n)           { var h = (n & 0xFF).toString(16); var t = \"0\" + h; return  t.substring(t.length() - 2); }\nfunction readHexStringAt(i,len){ var out=[]; var k=0; while(k<len){ out.push(hex2(u8(i+k))); k++; } return out.join(\"\"); }\nfunction readProtocolVersionAt(i){\n    var b=u8(i); var major=(b & 0xF0)>>4; var minor=b & 0x0F; return \"v\"+major+\".\"+minor;\n}\nfunction readHardwareVersionAt(i){\n    var major=u8(i); var minor=(u8(i+1) >> 4); return \"v\"+major+\".\"+minor;\n}\nfunction readFirmwareVersionAt(i){\n    var major=u8(i); var minor=u8(i+1); return \"v\"+major+\".\"+minor;\n}\nfunction readTslVersionAt(i){\n    var major=u8(i); var minor=u8(i+1); return \"v\"+major+\".\"+minor;\n}\nfunction readSerialNumberAt(i,len){ return readHexStringAt(i,len); }\nfunction getValue(map, key){\n    if (RAW_VALUE == 0) return key;\n    var v = map[key];\n    if (v == null) v = \"unknown\";\n    return v;\n}\nfunction readLoRaWANClass(t){\n    var m = {0:\"Class A\",1:\"Class B\",2:\"Class C\",3:\"Class CtoB\"};\n    return getValue(m, t);\n}\nfunction readDeviceStatus(b){\n    var m = {1:\"on\", 0:\"off\"};\n    return getValue(m, b);\n}\n//function toNumOr(x, dflt) {\n//    if (x == null) return dflt;\n//    var n = x * 1;\n//    if (n != n) return dflt;   // NaN check (NaN != NaN)\n//    return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n//}\nfunction stringToNumOr(x, dflt) {\n    if (x == null) return dflt;\n    //var inner = decodeToJson(x);\n    var n = decodeToJson(x);\n    return java.lang.Integer.parseInt(n);\n    //    if (n != n) return dflt;   // NaN check (NaN != NaN)\n    //  return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n}\n\nvar counter = stringToNumOr(metadata.rttc, 0);\n\nif (bytes != null && bytes.size() == 1 && ((bytes[0] & 0xFF) == 0xFF)) {\n    //counter = toNumOr(metadata.rttc, 0) + 1;\n    //metadata.put(\"rttc\", counter);\n    counter = counter + 1;\n    decoded.put(\"rttc\", counter);\n} else {\n    var i = 0;\n    //attrs.put(\"rttc\", 0);\n    decoded.put(\"rttc\", 0);\n    while (i < bytes.size()) {\n\tvar channel_id   = u8(i++);\n\tvar channel_type = u8(i++);\n\n\t// IPSO VERSION\n\tif (channel_id == 0xFF && channel_type == 0x01) {\n        //decoded.ipso_version = readProtocolVersionAt(i);\n\t    attributes.ipso_version = readProtocolVersionAt(i);\n\t    i += 1;\n\n\t    // HARDWARE VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0x09) {\n\t    //decoded.hardware_version = readHardwareVersionAt(i);\n\t    attributes.hardware_version = readHardwareVersionAt(i);\n\t    i += 2;\n\n\t    // FIRMWARE VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0x0A) {\n\t    //decoded.firmware_version = readFirmwareVersionAt(i);\n\t    attributes.firmware_version = readFirmwareVersionAt(i);\n\t    i += 2;\n\n\t    // DEVICE STATUS\n\t} else if (channel_id == 0xFF && channel_type == 0x0B) {\n\t    //decoded.device_status = readDeviceStatus(1);\n\t    attributes.device_status = readDeviceStatus(1);\n\t    i += 1;\n\n\t    // LORAWAN CLASS\n\t} else if (channel_id == 0xFF && channel_type == 0x0F) {\n\t    decoded.lorawan_class = readLoRaWANClass(u8(i));\n\t    i += 1;\n\n\t    // PRODUCT SERIAL NUMBER (8 bytes)\n\t} else if (channel_id == 0xFF && channel_type == 0x16) {\n        //decoded.sn = readSerialNumberAt(i, 8);\n        attributes.sn = readSerialNumberAt(i, 8);\n\t    i += 8;\n\n\t    // TSL VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0xFF) {\n\t    //decoded.tsl_version = readTslVersionAt(i);\n\t    attributes.tsl_version = readTslVersionAt(i);\n\t    i += 2;\n\n\t    // LOCATION (lon, lat) each int32, 1e6 scale\n\t} else if (channel_id == 0x03 && channel_type == 0xA1) {\n\t    decoded.longitude = readInt32LE(i) / 1000000.0;\n\t    decoded.latitude  = readInt32LE(i + 4) / 1000000.0;\n\t    i += 8;\n\n\t    // SIGNAL STRENGTH (RSSI, SNR) each int16, 0.1 scale\n\t} else if (channel_id == 0x04 && channel_type == 0xA2) {\n\t    decoded.rssi = readInt16LE(i) / 10.0;\n\t    decoded.snr  = readInt16LE(i + 2) / 10.0;\n\t    i += 4;\n\n\t    // SF (spreading factor) – 1 byte\n\t} else if (channel_id == 0x05 && channel_type == 0xA3) {\n\t    decoded.sf = u8(i);\n\t    i += 1;\n\n\t    // TX POWER (int16, 0.01 scale)\n\t} else if (channel_id == 0x06 && channel_type == 0xA4) {\n\t    decoded.tx_power = readInt16LE(i) / 100.0;\n\t    i += 2;\n\n\t} else {\n\t    break;\n\t}\n    }\n\n}\n\nif (decoded.rttc == 0 && decoded.latitude != null && decoded.longitude != null) {\n    attributes.put(\"latitude\", decoded.latitude);\n    attributes.put(\"longitude\", decoded.longitude);\n}\n\nif (attributes.size() > 0) {\n    decoded.put(\"attributes\", attributes);\n}\n\nreturn { msg: decoded, metadata: metadata, msgType: msgType };"
+        "tbelScript" : "// Time-stamp: <2025-08-26 11:27:18 rytis>\n// Made with love by Rytis.\n// Adapted after: https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\nvar RAW_VALUE = 0x00;\nvar b64   = msg.frmPayload;\nvar bytes = base64ToBytes(b64);\nvar decoded = decodeToJson(\"{}\");\nvar attributes = decodeToJson(\"{}\");\n\n\nfunction u8(idx)           { return (bytes[idx] & 0xFF); }\n//function i8(idx)           { var v = u8(idx); return (v > 0x7F) ? v - 256 : v; }\nfunction readUInt16LE(i)   { return (u8(i)) | (u8(i+1) << 8); }\nfunction readInt16LE(i)    { var v = readUInt16LE(i); return (v >= 0x8000) ? v - 0x10000 : v; }\nfunction readUInt32LE(i)   { var v = (u8(i)) | (u8(i+1)<<8) | (u8(i+2)<<16) | (u8(i+3)<<24); return (v >>> 0); }\nfunction readInt32LE(i)    { var u = readUInt32LE(i); return (u > 0x7FFFFFFF) ? (u - 0x100000000) : u; }\nfunction hex2(n)           { var h = (n & 0xFF).toString(16); var t = \"0\" + h; return  t.substring(t.length() - 2); }\nfunction readHexStringAt(i,len){ var out=[]; var k=0; while(k<len){ out.push(hex2(u8(i+k))); k++; } return out.join(\"\"); }\nfunction readProtocolVersionAt(i){\n    var b=u8(i); var major=(b & 0xF0)>>4; var minor=b & 0x0F; return \"v\"+major+\".\"+minor;\n}\nfunction readHardwareVersionAt(i){\n    var major=u8(i); var minor=(u8(i+1) >> 4); return \"v\"+major+\".\"+minor;\n}\nfunction readFirmwareVersionAt(i){\n    var major=u8(i); var minor=u8(i+1); return \"v\"+major+\".\"+minor;\n}\nfunction readTslVersionAt(i){\n    var major=u8(i); var minor=u8(i+1); return \"v\"+major+\".\"+minor;\n}\nfunction readSerialNumberAt(i,len){ return readHexStringAt(i,len); }\nfunction getValue(map, key){\n    if (RAW_VALUE == 0) return key;\n    var v = map[key];\n    if (v == null) v = \"unknown\";\n    return v;\n}\nfunction readLoRaWANClass(t){\n    var m = {0:\"Class A\",1:\"Class B\",2:\"Class C\",3:\"Class CtoB\"};\n    return getValue(m, t);\n}\nfunction readDeviceStatus(b){\n    var m = {1:\"on\", 0:\"off\"};\n    return getValue(m, b);\n}\n//function toNumOr(x, dflt) {\n//    if (x == null) return dflt;\n//    var n = x * 1;\n//    if (n != n) return dflt;   // NaN check (NaN != NaN)\n//    return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n//}\n\n// function stringToNumOr(x, dflt) {\n//     if (x == null) return dflt;\n//     //var inner = decodeToJson(x);\n//     n = decodeToJson(x);\n//     //return java.lang.Integer.parseInt(n);\n//     //    if (n != n) return dflt;   // NaN check (NaN != NaN)\n//     //  return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n// }\n\nfunction stringToNumOr(x, dflt) {\n    if (x == null) return dflt;\n    var n = x * 1;\n    if (n != n) return dflt;\n    return (n >= 0) ? Math.floor(n) : Math.ceil(n);\n}\n\nvar counter = stringToNumOr(metadata.rttc, 0);\n\nif (bytes != null && bytes.size() == 1 && ((bytes[0] & 0xFF) == 0xFF)) {\n    //counter = toNumOr(metadata.rttc, 0) + 1;\n    //metadata.put(\"rttc\", counter);\n    counter = counter + 1;\n    decoded.put(\"rttc\", counter);\n} else {\n    var i = 0;\n    //attrs.put(\"rttc\", 0);\n    decoded.put(\"rttc\", 0);\n    while (i < bytes.size()) {\n\tvar channel_id   = u8(i++);\n\tvar channel_type = u8(i++);\n\n\t// IPSO VERSION\n\tif (channel_id == 0xFF && channel_type == 0x01) {\n        //decoded.ipso_version = readProtocolVersionAt(i);\n\t    attributes.ipso_version = readProtocolVersionAt(i);\n\t    i += 1;\n\n\t    // HARDWARE VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0x09) {\n\t    //decoded.hardware_version = readHardwareVersionAt(i);\n\t    attributes.hardware_version = readHardwareVersionAt(i);\n\t    i += 2;\n\n\t    // FIRMWARE VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0x0A) {\n\t    //decoded.firmware_version = readFirmwareVersionAt(i);\n\t    attributes.firmware_version = readFirmwareVersionAt(i);\n\t    i += 2;\n\n\t    // DEVICE STATUS\n\t} else if (channel_id == 0xFF && channel_type == 0x0B) {\n\t    //decoded.device_status = readDeviceStatus(1);\n\t    attributes.device_status = readDeviceStatus(1);\n\t    i += 1;\n\n\t    // LORAWAN CLASS\n\t} else if (channel_id == 0xFF && channel_type == 0x0F) {\n\t    decoded.lorawan_class = readLoRaWANClass(u8(i));\n\t    i += 1;\n\n\t    // PRODUCT SERIAL NUMBER (8 bytes)\n\t} else if (channel_id == 0xFF && channel_type == 0x16) {\n        //decoded.sn = readSerialNumberAt(i, 8);\n        attributes.sn = readSerialNumberAt(i, 8);\n\t    i += 8;\n\n\t    // TSL VERSION\n\t} else if (channel_id == 0xFF && channel_type == 0xFF) {\n\t    //decoded.tsl_version = readTslVersionAt(i);\n\t    attributes.tsl_version = readTslVersionAt(i);\n\t    i += 2;\n\n\t    // LOCATION (lon, lat) each int32, 1e6 scale\n\t} else if (channel_id == 0x03 && channel_type == 0xA1) {\n\t    decoded.longitude = readInt32LE(i) / 1000000.0;\n\t    decoded.latitude  = readInt32LE(i + 4) / 1000000.0;\n\t    i += 8;\n\n\t    // SIGNAL STRENGTH (RSSI, SNR) each int16, 0.1 scale\n\t} else if (channel_id == 0x04 && channel_type == 0xA2) {\n\t    decoded.rssi = readInt16LE(i) / 10.0;\n\t    decoded.snr  = readInt16LE(i + 2) / 10.0;\n\t    i += 4;\n\n\t    // SF (spreading factor) – 1 byte\n\t} else if (channel_id == 0x05 && channel_type == 0xA3) {\n\t    decoded.sf = u8(i);\n\t    i += 1;\n\n\t    // TX POWER (int16, 0.01 scale)\n\t} else if (channel_id == 0x06 && channel_type == 0xA4) {\n\t    decoded.tx_power = readInt16LE(i) / 100.0;\n\t    i += 2;\n\n\t} else {\n\t    break;\n\t}\n    }\n\n}\n\nif (attributes.size() > 0) {\n    decoded.put(\"attributes\", attributes);\n}\n\nreturn { msg: decoded, metadata: metadata, msgType: msgType };"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -487,31 +515,157 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1125,
-        "layoutY" : 101
+        "layoutX" : 1101,
+        "layoutY" : 98
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return (msg.latitude != null && msg.longitude != null);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "9e8664c0-1ad5-11f1-a387-c9cb240000d9"
+      },
+      "name" : "got GPS coordinates?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1102,
+        "layoutY" : 201
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "if (msg.attributes != null) {\n    msg.remove(\"attributes\");\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "msg = {\n    latitude: msg.latitude,\n    longitude: msg.longitude\n};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "194100d0-1ad6-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Save GPS to attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Extract Latitude and longitude. If failure, then drop the packet.",
+        "layoutX" : 1408,
+        "layoutY" : 99
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ ],
+        "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ "latitude", "longitude" ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "1adc4f60-1ad8-11f1-a387-c9cb240000d9"
+      },
+      "name" : "fetch GPS attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1405,
+        "layoutY" : 208
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "msg.latitude = parseFloat(metadata.ss_latitude);\nmsg.longitude = parseFloat(metadata.ss_longitude);\n\nmetadata.remove(\"ss_latitude\");\nmetadata.remove(\"ss_longitude\");\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1756217942610,
+        "allEnabledUntil" : 0,
         "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "8acd15e1-0d7f-11f1-a387-c9cb240000d9"
+        "id" : "1adc4f61-1ad8-11f1-a387-c9cb240000d9"
       },
-      "name" : "prepare telemetry",
+      "name" : "inherit GPS and prepare telemetry",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "In case somewhere 'attributes' have been defined",
+        "layoutX" : 1405,
+        "layoutY" : 317
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "if (msg.attributes != null) {\n    msg.remove(\"attributes\");\n}\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "1adc7670-1ad8-11f1-a387-c9cb240000d9"
+      },
+      "name" : "kill the fake attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1409,
+        "layoutY" : 544
+      },
+      "configuration" : {
+        "event" : "ACTIVITY_EVENT"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "35f0fd00-1ad8-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Make it active",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbDeviceStateNode"
     } ],
     "ruleChainConnections" : null
   },
