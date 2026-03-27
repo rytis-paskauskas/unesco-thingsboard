@@ -106,15 +106,11 @@
       "type" : "Failure"
     }, {
       "fromIndex" : 17,
-      "toIndex" : 25,
-      "type" : "Failure"
-    }, {
-      "fromIndex" : 17,
-      "toIndex" : 25,
+      "toIndex" : 27,
       "type" : "Success"
     }, {
       "fromIndex" : 18,
-      "toIndex" : 25,
+      "toIndex" : 27,
       "type" : "Success"
     }, {
       "fromIndex" : 19,
@@ -144,6 +140,10 @@
       "fromIndex" : 26,
       "toIndex" : 20,
       "type" : "Success"
+    }, {
+      "fromIndex" : 27,
+      "toIndex" : 25,
+      "type" : "Success"
     } ],
     "firstNodeIndex" : 9,
     "nodes" : [ {
@@ -162,7 +162,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771584073934,
+        "allEnabledUntil" : 1774514205121,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -194,7 +194,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771584094717,
+        "allEnabledUntil" : 1771595051643,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -220,7 +220,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771583989658,
+        "allEnabledUntil" : 1774058051088,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -437,7 +437,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765278418421,
+        "allEnabledUntil" : 1771594878252,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -470,7 +470,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765283186547,
+        "allEnabledUntil" : 1771594878252,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -498,7 +498,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771592234981,
+        "allEnabledUntil" : 1771594878252,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -527,7 +527,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1762024993112,
+        "allEnabledUntil" : 1771594891514,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -551,7 +551,7 @@
         "fetchTo" : "METADATA",
         "clientAttributeNames" : [ ],
         "sharedAttributeNames" : [ ],
-        "serverAttributeNames" : [ "appName", "devName", "topic" ],
+        "serverAttributeNames" : [ "appName", "devName", "topic", "devEUI" ],
         "latestTsKeyNames" : [ ],
         "getLatestValueWithTs" : false
       },
@@ -559,7 +559,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765533426784,
+        "allEnabledUntil" : 1774620027308,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -581,13 +581,13 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var myMsg = {\n    frmPayload: msg.frmPayload,\n    fPort: msg.fPort,\n    fCnt: msg.fCnt\n};\n\nvar myMetadata = { \n    deviceName: metadata.ss_devName,\n    deviceType: metadata.ss_appName,\n    ts: metadata.ts,\n};\n\n\nreturn {msg: myMsg, metadata: myMetadata, msgType: msgType};"
+        "tbelScript" : "var myMsg = {\n    frmPayload: msg.frmPayload,\n    fPort: msg.fPort,\n    fCnt: msg.fCnt,\n    ts: msg.ts,\n    attributes: { deviceEUI: metadata.ss_devEUI}\n};\n\nvar myMetadata = { \n    deviceName: metadata.ss_devName,\n    deviceType: metadata.ss_appName,\n    ts: metadata.ts,\n};\n\n\nreturn {msg: myMsg, metadata: myMetadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1765533126367,
+        "allEnabledUntil" : 1774620027308,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -595,7 +595,7 @@
         "entityType" : "RULE_NODE",
         "id" : "24c7fdf0-eafc-11f0-8074-370203ef6858"
       },
-      "name" : "data -> device",
+      "name" : "Prepare data for the device",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -615,7 +615,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771584007355,
+        "allEnabledUntil" : 1774620008378,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -638,16 +638,16 @@
         "tellFailureIfAbsent" : true,
         "fetchTo" : "METADATA",
         "clientAttributeNames" : [ ],
-        "latestTsKeyNames" : [ ],
-        "serverAttributeNames" : [ "commonName" ],
         "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ "commonName" ],
+        "latestTsKeyNames" : [ ],
         "getLatestValueWithTs" : false
       },
       "configurationVersion" : 1,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1769162294620,
+        "allEnabledUntil" : 1774619907401,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -731,7 +731,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1771593174885,
+        "allEnabledUntil" : 1774514279463,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -851,7 +851,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1769162438314,
+        "allEnabledUntil" : 1774619907401,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -867,8 +867,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 2451,
-        "layoutY" : 354
+        "layoutX" : 2676,
+        "layoutY" : 356
       },
       "configuration" : {
         "forwardMsgToDefaultRuleChain" : true,
@@ -878,7 +878,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1769163207735,
+        "allEnabledUntil" : 1774619907401,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -923,6 +923,34 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 2447,
+        "layoutY" : 247
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "if (msg.ts != null) {\n    metadata.ts = msg.ts;\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1774620062947,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "259228b0-28ea-11f1-a387-c9cb240000d9"
+      },
+      "name" : "update ts",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
     } ],
     "ruleChainConnections" : null
   },
