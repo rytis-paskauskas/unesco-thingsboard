@@ -77,10 +77,6 @@
       "toIndex" : 6,
       "type" : "Success"
     }, {
-      "fromIndex" : 10,
-      "toIndex" : 13,
-      "type" : "Success"
-    }, {
       "fromIndex" : 11,
       "toIndex" : 12,
       "type" : "True"
@@ -106,15 +102,19 @@
       "type" : "Success"
     }, {
       "fromIndex" : 17,
-      "toIndex" : 10,
+      "toIndex" : 11,
       "type" : "Success"
     }, {
       "fromIndex" : 17,
-      "toIndex" : 11,
+      "toIndex" : 21,
       "type" : "Success"
     }, {
       "fromIndex" : 18,
       "toIndex" : 20,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 21,
+      "toIndex" : 13,
       "type" : "Success"
     } ],
     "firstNodeIndex" : 9,
@@ -393,8 +393,8 @@
     }, {
       "additionalInfo" : {
         "description" : "\nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
-        "layoutX" : 978,
-        "layoutY" : 450
+        "layoutX" : 981,
+        "layoutY" : 915
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -702,6 +702,34 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "\nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
+        "layoutX" : 975,
+        "layoutY" : 440
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// {\"frmPayload\": \"bxeAAqUtgAAAXf8=\", \"fPort\": 1, \"fCnt\": 999}\n// {\"frmPayload\": \"bz+EDtMd4QEeAf8=\", \"fPort\": 1, \"fCnt\": 999}\n\n// Utilities by Rytis 2026-04-02\n\nfunction round0(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x);\n}\n\nfunction round1(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x * 10.0) / 10.0;\n}\n\nfunction round2(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x * 100.0) / 100.0;\n}\n\nfunction error_msg(text) {\n    return {\n        msg: {\n            error: text,\n            raw: msg.frmPayload,\n            fCnt: msg.fCnt\n        },\n        metadata: metadata != null ? metadata : {},\n        msgType: msgType != null ? msgType : \"POST_TELEMETRY_REQUEST\"\n    };\n}\n\nfunction bytesToBits(bytes) {\n    var bits = [];\n\n    for (var i = 0; i < bytes.length; i++) {\n        var b = bytes[i];\n\n        // normalize signed → unsigned\n        if (b < 0) {\n            b += 256;\n        }\n\n        // extract bits (MSB → LSB)\n        for (var j = 7; j >= 0; j--) {\n            bits.push((b >> j) & 1);\n        }\n    }\n\n    return bits;\n}\n// Base64 to bits.\nfunction newBitReader(b64) {\n    if (b64 == null) {\n        return null;\n    }\n\n    var raw = base64ToBytesList(b64);\n    var bytes = [];\n    for (var i = 0; i < raw.length; i++) {\n        var b = raw[i];\n        if (b < 0) {\n            b = b + 256;\n        }\n        bytes.push(b);\n    }\n\n    if (bytes.length == 0) {\n        return null;\n    }\n    var bits = bytesToBits(bytes);\n\n    return {\n        repr: bits,\n        pos: 0\n    };\n}\n\nfunction readBits(br, N) {\n    if (br == null) {\n        return null;\n    }\n\n    if (br.repr == null) {\n        return null;\n    }\n\n    if (br.pos == null) {\n        return null;\n    }\n\n    if (N == null || N <= 0) {\n        return 0;\n    }\n\n    var len = br.repr.length;\n\n    if (br.pos + N > len) {\n        return null;\n    }\n\n    var value = 0;\n    var i = 0;\n\n    while (i < N) {\n        var idx = br.pos;\n\n        // safe index check (TBEL defensive)\n        if (idx < 0 || idx >= len) {\n            return null;\n        }\n\n        var bit = br.repr[idx];\n\n        // ensure valid bit\n        if (bit == null) {\n            return null;\n        }\n\n        if (bit != 0 && bit != 1) {\n            return null;\n        }\n\n        // accumulate (MSB-first)\n        value = (value * 2) + bit;\n\n        // advance position\n        br.pos = br.pos + 1;\n        i = i + 1;\n    }\n\n    return value;\n}\n\n\nvar br = newBitReader(msg.frmPayload);\n\nif (br == null) {\n    return error_msg(\"invalid_payload\");\n}\nvar len = br.repr.length;\n\nvar batt = null;\nvar t = null;\nvar tm = null;\nvar tx = null;\nvar h = null;\nvar p = null;\nvar s = null;\nvar sx = null;\nvar temp = null;\n\n// 11 byte Payload 11*8 = 88.\nif (br.repr.length == 88) {\n    temp = readBits(br, 2);\n    if (temp != 1) {\n        return error_msg(\"payload_not_type_1\");\n    }\n    temp = readBits(br, 5);\n    batt = (temp!=null && temp<parseLong(1<<5) ? round1(3.0 + (0.05 * temp)) : null);\n    temp = readBits(br, 11);\n    t    = (temp!=null && temp<parseLong(1<<11) ? round1((0.1 * temp) - 100) : null);\n    temp = readBits(br, 6);\n    tm   = (temp!=null && temp<parseLong(1<<6) ? round1(t - (0.1 * temp)) : null);\n    temp = readBits(br, 6);\n    tx   = (temp!=null && temp<parseLong(1<<6) ? round1(t + (0.1 * temp)) : null);\n    temp = readBits(br, 9);\n    h    = (temp!=null && temp<parseLong(1<<9) ? round1(0.2 * temp) : null);\n    temp = readBits(br, 14);\n    p    = (temp!=null && temp<parseLong(1<<14) ? round2(500 + (0.05 * temp)) : null);\n    temp=readBits(br, 10);\n    s    = (temp!=null && temp<parseLong(1<<10) ? 2*temp: null);\n    temp = readBits(br, 9);\n    sx   = (temp!=null && temp<parseLong(1<<9) ? s + 2*temp: null);\n}\n\n\n// ---- decode fields (total 72 bits) ----\n\nreturn {\n    msg: {\n        helix_batt: batt, \n        t: t, \n        tm: tm, \n        tx: tx, \n        h: h, \n        p: p, \n        s: s, \n        sx: sx\n    },\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "0d965ae0-2f2c-11f1-a387-c9cb240000d9"
+      },
+      "name" : "decode base64",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
     } ],
     "ruleChainConnections" : null
   },
