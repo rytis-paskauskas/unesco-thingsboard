@@ -1,0 +1,1994 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "title" : "Hydrological station",
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "40089d30-36f7-da61-9939-7d18cc10fbd0" : {
+          "typeFullFqn" : "system.humidity_chart_card",
+          "type" : "timeseries",
+          "sizeX" : 4.5,
+          "sizeY" : 3.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "c4c30428-3579-543f-3777-6089a0c02c29",
+              "dataKeys" : [ {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "water leight",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "settings" : { },
+                "units" : "cm",
+                "decimals" : 1,
+                "aggregationType" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              },
+              "latestDataKeys" : [ {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "Latest",
+                "color" : "#4caf50",
+                "settings" : {
+                  "position" : "center",
+                  "font" : {
+                    "family" : "Roboto",
+                    "size" : 52,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "500",
+                    "lineHeight" : "1"
+                  },
+                  "color" : {
+                    "type" : "range",
+                    "color" : "rgba(0, 0, 0, 0.87)",
+                    "gradient" : {
+                      "advancedMode" : false,
+                      "gradient" : [ "rgba(0, 255, 0, 1)", "rgba(255, 0, 0, 1)" ],
+                      "gradientAdvanced" : [ {
+                        "source" : {
+                          "type" : "constant"
+                        },
+                        "color" : "rgba(0, 255, 0, 1)"
+                      }, {
+                        "source" : {
+                          "type" : "constant"
+                        },
+                        "color" : "rgba(255, 0, 0, 1)"
+                      } ],
+                      "minValue" : 0,
+                      "maxValue" : 100
+                    },
+                    "rangeList" : {
+                      "advancedMode" : false,
+                      "range" : [ {
+                        "from" : 0,
+                        "to" : 10,
+                        "color" : "#1F2E19"
+                      }, {
+                        "from" : 10,
+                        "to" : 50,
+                        "color" : "#048AD3"
+                      }, {
+                        "from" : 50,
+                        "to" : 100,
+                        "color" : "#8559D6"
+                      }, {
+                        "from" : 100,
+                        "to" : 200,
+                        "color" : "#E91E63"
+                      }, {
+                        "from" : 200,
+                        "to" : 300,
+                        "color" : "#6F113A"
+                      } ],
+                      "rangeAdvanced" : [ ]
+                    },
+                    "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+                  },
+                  "showArrow" : true
+                },
+                "units" : "cm",
+                "decimals" : 1,
+                "aggregationType" : "NONE",
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "Delta percent",
+                "color" : "#f44336",
+                "settings" : {
+                  "position" : "rightTop",
+                  "font" : {
+                    "size" : 14,
+                    "sizeUnit" : "px",
+                    "family" : "Roboto",
+                    "weight" : "500",
+                    "style" : "normal",
+                    "lineHeight" : "20px"
+                  },
+                  "color" : {
+                    "type" : "range",
+                    "color" : "rgba(0, 0, 0, 0.38)",
+                    "rangeList" : {
+                      "advancedMode" : false,
+                      "range" : [ {
+                        "from" : null,
+                        "to" : 0,
+                        "color" : "#198038"
+                      }, {
+                        "from" : 0,
+                        "to" : 0,
+                        "color" : "rgba(0, 0, 0, 0.87)"
+                      }, {
+                        "from" : 0,
+                        "to" : null,
+                        "color" : "#D12730"
+                      } ]
+                    },
+                    "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+                  },
+                  "showArrow" : true
+                },
+                "units" : "%",
+                "decimals" : 0,
+                "aggregationType" : "AVG",
+                "comparisonEnabled" : true,
+                "timeForComparison" : "previousInterval",
+                "comparisonResultType" : "DELTA_PERCENT",
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "Delta absolute",
+                "color" : "#ffc107",
+                "settings" : {
+                  "position" : "rightBottom",
+                  "font" : {
+                    "size" : 11,
+                    "sizeUnit" : "px",
+                    "family" : "Roboto",
+                    "weight" : "400",
+                    "style" : "normal",
+                    "lineHeight" : "16px"
+                  },
+                  "color" : {
+                    "type" : "constant",
+                    "color" : "rgba(0, 0, 0, 0.38)",
+                    "rangeList" : {
+                      "advancedMode" : false,
+                      "range" : [ ]
+                    },
+                    "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+                  },
+                  "showArrow" : false
+                },
+                "units" : "cm",
+                "decimals" : 1,
+                "aggregationType" : "AVG",
+                "comparisonEnabled" : true,
+                "timeForComparison" : "previousInterval",
+                "comparisonResultType" : "DELTA_ABSOLUTE",
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ]
+            } ],
+            "timewindow" : {
+              "selectedTab" : 1,
+              "history" : {
+                "historyType" : 2,
+                "interval" : 3600000,
+                "quickInterval" : "CURRENT_WEEK_ISO_SO_FAR"
+              },
+              "aggregation" : {
+                "type" : "AVG"
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : null,
+            "padding" : "0",
+            "settings" : {
+              "autoScale" : true,
+              "showSubtitle" : true,
+              "subtitle" : "${entityName}",
+              "subtitleFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "subtitleColor" : "rgba(0, 0, 0, 0.38)",
+              "showDate" : true,
+              "dateFormat" : {
+                "format" : null,
+                "lastUpdateAgo" : true,
+                "custom" : false,
+                "auto" : false
+              },
+              "dateFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "dateColor" : "rgba(0, 0, 0, 0.38)",
+              "showChart" : true,
+              "background" : {
+                "type" : "color",
+                "imageUrl" : null,
+                "color" : "#A7FFEBCC",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "padding" : "18px"
+            },
+            "title" : "Water Level: current vs previous week stats",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "mobileHeight" : null,
+            "configMode" : "advanced",
+            "actions" : { },
+            "showTitleIcon" : true,
+            "titleIcon" : "flood",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "titleFont" : {
+              "size" : 16,
+              "sizeUnit" : "px",
+              "family" : "Roboto",
+              "weight" : "500",
+              "style" : "normal",
+              "lineHeight" : "24px"
+            },
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "useDashboardTimewindow" : false,
+            "displayTimewindow" : true,
+            "decimals" : 1,
+            "timewindowStyle" : {
+              "showIcon" : true,
+              "iconSize" : "24px",
+              "icon" : null,
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : "Roboto",
+                "weight" : "400",
+                "style" : "normal",
+                "lineHeight" : "16px"
+              },
+              "color" : "rgba(0, 0, 0, 0.38)",
+              "displayTypePrefix" : false
+            },
+            "titleColor" : "rgba(0, 0, 0, 0.87)",
+            "borderRadius" : null,
+            "enableDataExport" : false,
+            "units" : "cm"
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "40089d30-36f7-da61-9939-7d18cc10fbd0"
+        },
+        "8ac87825-9267-e11c-3cfb-987a3a314266" : {
+          "typeFullFqn" : "system.time_series_chart",
+          "type" : "timeseries",
+          "sizeX" : 8,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "c4c30428-3579-543f-3777-6089a0c02c29",
+              "dataKeys" : [ {
+                "name" : "distance",
+                "type" : "timeseries",
+                "label" : "distance",
+                "color" : "#435B63",
+                "settings" : {
+                  "yAxisId" : "default",
+                  "showInLegend" : true,
+                  "type" : "line",
+                  "lineSettings" : {
+                    "showLine" : true,
+                    "step" : false,
+                    "stepType" : "start",
+                    "smooth" : false,
+                    "lineType" : "solid",
+                    "lineWidth" : 3,
+                    "showPoints" : true,
+                    "showPointLabel" : false,
+                    "pointLabelPosition" : "top",
+                    "pointLabelFont" : {
+                      "family" : "Roboto",
+                      "size" : 11,
+                      "sizeUnit" : "px",
+                      "style" : "normal",
+                      "weight" : "400",
+                      "lineHeight" : "1"
+                    },
+                    "pointLabelColor" : "rgba(0, 0, 0, 0.76)",
+                    "enablePointLabelBackground" : false,
+                    "pointLabelBackground" : "rgba(255,255,255,0.56)",
+                    "pointShape" : "emptyCircle",
+                    "pointSize" : 4,
+                    "fillAreaSettings" : {
+                      "type" : "none",
+                      "opacity" : 0.4,
+                      "gradient" : {
+                        "start" : 100,
+                        "end" : 0
+                      }
+                    }
+                  },
+                  "barSettings" : {
+                    "showBorder" : false,
+                    "borderWidth" : 2,
+                    "borderRadius" : 0,
+                    "showLabel" : false,
+                    "labelPosition" : "top",
+                    "labelFont" : {
+                      "family" : "Roboto",
+                      "size" : 11,
+                      "sizeUnit" : "px",
+                      "style" : "normal",
+                      "weight" : "400",
+                      "lineHeight" : "1"
+                    },
+                    "labelColor" : "rgba(0, 0, 0, 0.76)",
+                    "enableLabelBackground" : false,
+                    "labelBackground" : "rgba(255,255,255,0.56)",
+                    "backgroundSettings" : {
+                      "type" : "none",
+                      "opacity" : 0.4,
+                      "gradient" : {
+                        "start" : 100,
+                        "end" : 0
+                      }
+                    }
+                  },
+                  "comparisonSettings" : {
+                    "showValuesForComparison" : false,
+                    "comparisonValuesLabel" : "",
+                    "color" : ""
+                  },
+                  "dataHiddenByDefault" : false,
+                  "tooltipValueFormatter" : null
+                },
+                "units" : "cm",
+                "decimals" : 1,
+                "aggregationType" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              },
+              "latestDataKeys" : [ ]
+            } ],
+            "showTitle" : true,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "showLegend" : true,
+              "legendConfig" : {
+                "direction" : "column",
+                "position" : "bottom",
+                "sortDataKeys" : false,
+                "showMin" : true,
+                "showMax" : true,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : true,
+                "valueFormat" : null
+              },
+              "thresholds" : [ ],
+              "dataZoom" : true,
+              "stack" : false,
+              "yAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "left",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "xAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "bottom",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 10,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "ticksFormat" : { },
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "legendLabelFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "legendLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "showTooltip" : true,
+              "tooltipTrigger" : "axis",
+              "tooltipValueFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "16px"
+              },
+              "tooltipValueColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipShowDate" : true,
+              "tooltipDateFormat" : {
+                "format" : null,
+                "lastUpdateAgo" : false,
+                "custom" : false,
+                "auto" : true,
+                "autoDateFormatSettings" : { }
+              },
+              "tooltipDateFont" : {
+                "family" : "Roboto",
+                "size" : 11,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "tooltipDateColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipDateInterval" : true,
+              "tooltipBackgroundColor" : "rgba(255, 255, 255, 0.76)",
+              "tooltipBackgroundBlur" : 4,
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "yAxes" : {
+                "default" : {
+                  "units" : null,
+                  "decimals" : 0,
+                  "show" : true,
+                  "label" : "",
+                  "labelFont" : {
+                    "family" : "Roboto",
+                    "size" : 12,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "600",
+                    "lineHeight" : "1"
+                  },
+                  "labelColor" : "rgba(0, 0, 0, 0.54)",
+                  "position" : "left",
+                  "showTickLabels" : true,
+                  "tickLabelFont" : {
+                    "family" : "Roboto",
+                    "size" : 12,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "400",
+                    "lineHeight" : "1"
+                  },
+                  "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                  "ticksFormatter" : null,
+                  "showTicks" : true,
+                  "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                  "showLine" : true,
+                  "lineColor" : "rgba(0, 0, 0, 0.54)",
+                  "showSplitLines" : true,
+                  "splitLinesColor" : "rgba(0, 0, 0, 0.12)",
+                  "id" : "default",
+                  "order" : 0,
+                  "min" : {
+                    "type" : "constant",
+                    "value" : null,
+                    "entityAlias" : null
+                  },
+                  "max" : {
+                    "type" : "constant",
+                    "value" : null,
+                    "entityAlias" : null
+                  }
+                }
+              },
+              "noAggregationBarWidthSettings" : {
+                "strategy" : "group",
+                "groupWidth" : {
+                  "relative" : true,
+                  "relativeWidth" : 2,
+                  "absoluteWidth" : 1000
+                },
+                "barWidth" : {
+                  "relative" : true,
+                  "relativeWidth" : 2,
+                  "absoluteWidth" : 1000
+                }
+              },
+              "animation" : {
+                "animation" : true,
+                "animationThreshold" : 2000,
+                "animationDuration" : 500,
+                "animationEasing" : "cubicOut",
+                "animationDelay" : 0,
+                "animationDurationUpdate" : 300,
+                "animationEasingUpdate" : "cubicOut",
+                "animationDelayUpdate" : 0
+              },
+              "padding" : "12px",
+              "comparisonEnabled" : false,
+              "timeForComparison" : "previousInterval",
+              "comparisonCustomIntervalValue" : 7200000,
+              "comparisonXAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "top",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 10,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "ticksFormat" : { },
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "grid" : {
+                "show" : false,
+                "backgroundColor" : null,
+                "borderWidth" : 1,
+                "borderColor" : "#ccc"
+              },
+              "legendColumnTitleFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "legendColumnTitleColor" : "rgba(0, 0, 0, 0.38)",
+              "legendValueFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "16px"
+              },
+              "legendValueColor" : "rgba(0, 0, 0, 0.87)",
+              "tooltipLabelFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipHideZeroValues" : null,
+              "tooltipStackedShowTotal" : false
+            },
+            "title" : "Direct measurement",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : null,
+            "mobileHeight" : null,
+            "configMode" : "advanced",
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleIcon" : "thermostat",
+            "iconColor" : "#1F6BDD",
+            "useDashboardTimewindow" : true,
+            "titleFont" : {
+              "size" : 16,
+              "sizeUnit" : "px",
+              "family" : "Roboto",
+              "weight" : "500",
+              "style" : "normal",
+              "lineHeight" : "24px"
+            },
+            "titleColor" : "rgba(0, 0, 0, 0.87)",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "units" : "",
+            "decimals" : null,
+            "noDataDisplayMessage" : "",
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "iconSize" : "0px",
+            "timewindowStyle" : {
+              "showIcon" : false,
+              "iconSize" : "24px",
+              "icon" : null,
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : "Roboto",
+                "weight" : "400",
+                "style" : "normal",
+                "lineHeight" : "16px"
+              },
+              "color" : "rgba(0, 0, 0, 0.38)",
+              "displayTypePrefix" : true
+            },
+            "enableDataExport" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "8ac87825-9267-e11c-3cfb-987a3a314266"
+        },
+        "ee696f76-a474-b03e-ea32-f2719fab7135" : {
+          "typeFullFqn" : "system.cards.html_value_card",
+          "type" : "latest",
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "c4c30428-3579-543f-3777-6089a0c02c29",
+              "dataKeys" : [ {
+                "name" : "lastActivityTime",
+                "type" : "attribute",
+                "label" : "lastActivityTime",
+                "color" : "#4caf50",
+                "settings" : { },
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "const d = new Date(value);\n\nif (isNaN(d.getTime())) {\n    return \"N/A\";\n}\n\nconst pad = n => String(n).padStart(2, \"0\");\nconst dt = d.toLocaleDateString(undefined, {\n    year: \"numeric\",\n    month: \"2-digit\",\n    day: \"2-digit\"\n});\n// return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ` +\n//       `${pad(d.getHours())}:${pad(d.getMinutes())}`;\nreturn `${dt} ` + `${pad(d.getHours())}:${pad(d.getMinutes())}`;\n"
+              }, {
+                "name" : "deviceEUI",
+                "type" : "attribute",
+                "label" : "deviceEUI",
+                "color" : "#f44336",
+                "settings" : { }
+              }, {
+                "name" : "active",
+                "type" : "attribute",
+                "label" : "active",
+                "color" : "#ffc107",
+                "settings" : { }
+              }, {
+                "name" : "displayName",
+                "type" : "entityField",
+                "label" : "name",
+                "color" : "#9c27b0",
+                "settings" : { },
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "commonName",
+                "type" : "attribute",
+                "label" : "commonName",
+                "color" : "#8bc34a",
+                "settings" : { }
+              }, {
+                "name" : "name",
+                "type" : "entityField",
+                "label" : "Name",
+                "color" : "#8bc34a",
+                "settings" : { }
+              }, {
+                "name" : "battery",
+                "type" : "timeseries",
+                "label" : "battery",
+                "color" : "#8bc34a",
+                "settings" : { }
+              }, {
+                "name" : "distance",
+                "type" : "timeseries",
+                "label" : "distance",
+                "color" : "#3f51b5",
+                "settings" : { }
+              }, {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "waterLevel",
+                "color" : "#e91e63",
+                "settings" : { }
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "cardHtml" : "<div class=\"card\">\n  <div class=\"content\">\n\n    <div class=\"header\">\n      <div class=\"title-marker\"></div>\n\n      <div class=\"title-group\">\n        <h1>Ultrasonic distance sensor</h1>\n        <div class=\"subtitle\">Measurements and device information</div>\n      </div>\n    </div>\n\n    <div class=\"sections\">\n\n      <section class=\"section\">\n        <h2>Device status</h2>\n\n        <div class=\"status-grid\">\n\n          <div class=\"info-box\">\n            <div class=\"label\">Active</div>\n            <div class=\"value\">${active}</div>\n          </div>\n\n          <div class=\"info-box\">\n            <div class=\"label\">Last seen</div>\n            <div class=\"value value-small\">${lastActivityTime}</div>\n          </div>\n\n          <div class=\"info-box\">\n            <div class=\"label\">Battery status</div>\n            <div class=\"value\">${battery}</div>\n          </div>\n\n        </div>\n      </section>\n\n      <section class=\"section\">\n        <h2>Device identifiers</h2>\n\n        <div class=\"identifier-row\">\n          <span class=\"label\">Database name</span>\n          <span class=\"identifier-value\">${Name} (${commonName})</span>\n        </div>\n\n        <div class=\"identifier-row\">\n          <span class=\"label\">Device EUI</span>\n          <span class=\"identifier-value monospace\">${deviceEUI}</span>\n        </div>\n      </section>\n\n    </div>\n\n  </div>\n</div>",
+              "cardCss" : ".card {\n   width: 100%;\n   height: 100%;\n   border: 2px solid #ccc;\n   border-radius: 8px;\n   box-sizing: border-box;\n   background: #fff;\n   color: #263238;\n   overflow: hidden;\n}\n\n.card .content {\n   padding: 20px;\n   display: flex;\n   flex-direction: column;\n   align-items: stretch;\n   justify-content: flex-start;\n   gap: 20px;\n   width: 100%;\n   height: 100%;\n   box-sizing: border-box;\n   overflow-y: auto;\n}\n\n/* Header */\n\n.card .header {\n   display: flex;\n   align-items: stretch;\n   gap: 12px;\n   flex-shrink: 0;\n}\n\n.card .title-marker {\n   width: 5px;\n   min-height: 58px;\n   border-radius: 3px;\n   background: #1976d2;\n}\n\n.card .title-group {\n   display: flex;\n   flex-direction: column;\n   justify-content: center;\n}\n\n.card h1 {\n   margin: 0;\n   padding: 0;\n   color: #455a64;\n   font-size: 24px;\n   font-weight: 700;\n   line-height: 30px;\n   text-transform: uppercase;\n   letter-spacing: 0.02em;\n}\n\n.card .subtitle {\n   margin-top: 3px;\n   color: #78909c;\n   font-size: 14px;\n   font-weight: 400;\n   line-height: 20px;\n}\n\n/* Main content */\n\n.card .sections {\n   display: flex;\n   flex-direction: column;\n   gap: 20px;\n   width: 100%;\n}\n\n.card .section {\n   width: 100%;\n}\n\n.card h2 {\n   margin: 0 0 12px;\n   padding: 0 0 7px;\n   border-bottom: 1px solid #e0e0e0;\n   color: #607d8b;\n   font-size: 13px;\n   font-weight: 700;\n   line-height: 18px;\n   text-transform: uppercase;\n   letter-spacing: 0.06em;\n}\n\n/* Status boxes */\n\n.card .status-grid {\n   display: grid;\n   grid-template-columns: repeat(3, minmax(0, 1fr));\n   gap: 12px;\n}\n\n.card .info-box {\n   min-width: 0;\n   padding: 14px;\n   border: 1px solid #e2e7ea;\n   border-radius: 7px;\n   box-sizing: border-box;\n   background: #f7f9fa;\n}\n\n.card .label {\n   display: block;\n   margin-bottom: 5px;\n   color: #78909c;\n   font-size: 12px;\n   font-weight: 600;\n   line-height: 16px;\n}\n\n.card .value {\n   color: #263238;\n   font-size: 22px;\n   font-weight: 500;\n   line-height: 28px;\n   overflow-wrap: anywhere;\n}\n\n.card .value-small {\n   font-size: 15px;\n   line-height: 22px;\n}\n\n/* Identifier rows */\n\n.card .identifier-row {\n   display: flex;\n   align-items: center;\n   justify-content: space-between;\n   gap: 20px;\n   margin-bottom: 9px;\n   padding: 11px 14px;\n   border: 1px solid #e2e7ea;\n   border-radius: 7px;\n   box-sizing: border-box;\n   background: #f7f9fa;\n}\n\n.card .identifier-row:last-child {\n   margin-bottom: 0;\n}\n\n.card .identifier-row .label {\n   margin: 0;\n   flex-shrink: 0;\n}\n\n.card .identifier-value {\n   min-width: 0;\n   color: #263238;\n   font-size: 14px;\n   font-weight: 600;\n   text-align: right;\n   overflow-wrap: anywhere;\n}\n\n.card .monospace {\n   padding: 3px 7px;\n   border-radius: 4px;\n   background: #e8edef;\n   font-family: monospace;\n   font-size: 13px;\n   letter-spacing: 0.03em;\n}\n\n/* Responsive layout */\n\n@media (max-width: 650px) {\n   .card .content {\n      padding: 16px;\n   }\n\n   .card .status-grid {\n      grid-template-columns: 1fr;\n   }\n\n   .card .identifier-row {\n      align-items: flex-start;\n      flex-direction: column;\n      gap: 4px;\n   }\n\n   .card .identifier-value {\n      text-align: left;\n   }\n}"
+            },
+            "title" : "HTML Value Card",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "actions" : { },
+            "enableDataExport" : false,
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "ee696f76-a474-b03e-ea32-f2719fab7135"
+        },
+        "a83393a4-15f2-04ce-a18c-f8736285da47" : {
+          "typeFullFqn" : "system.map",
+          "type" : "latest",
+          "sizeX" : 8.5,
+          "sizeY" : 6,
+          "config" : {
+            "datasources" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "mapType" : "geoMap",
+              "layers" : [ {
+                "label" : "{i18n:widgets.maps.layer.roadmap}",
+                "provider" : "openstreet",
+                "layerType" : "OpenStreetMap.Mapnik"
+              }, {
+                "label" : "{i18n:widgets.maps.layer.satellite}",
+                "provider" : "openstreet",
+                "layerType" : "Esri.WorldImagery"
+              }, {
+                "label" : "{i18n:widgets.maps.layer.hybrid}",
+                "provider" : "openstreet",
+                "layerType" : "Esri.WorldImagery",
+                "referenceLayer" : "openstreetmap_hybrid"
+              } ],
+              "imageSource" : null,
+              "markers" : [ {
+                "dsType" : "entity",
+                "dsLabel" : "",
+                "xKey" : {
+                  "name" : "latitude",
+                  "type" : "attribute",
+                  "label" : "latitude",
+                  "color" : "#2196f3",
+                  "settings" : { }
+                },
+                "yKey" : {
+                  "name" : "longitude",
+                  "label" : "longitude",
+                  "type" : "attribute",
+                  "settings" : { },
+                  "color" : "#2196f3"
+                },
+                "markerType" : "shape",
+                "markerShape" : {
+                  "shape" : "markerShape1",
+                  "size" : 34,
+                  "color" : {
+                    "type" : "constant",
+                    "color" : "#307FE5"
+                  }
+                },
+                "markerIcon" : {
+                  "iconContainer" : "iconContainer1",
+                  "icon" : "mdi:lightbulb-on",
+                  "size" : 48,
+                  "color" : {
+                    "type" : "constant",
+                    "color" : "#307FE5"
+                  }
+                },
+                "markerImage" : {
+                  "type" : "image",
+                  "image" : "/assets/markers/shape1.svg",
+                  "imageSize" : 34
+                },
+                "markerOffsetX" : 0.5,
+                "markerOffsetY" : 1,
+                "positionFunction" : "return {x: origXPos, y: origYPos};",
+                "markerClustering" : {
+                  "enable" : false,
+                  "zoomOnClick" : true,
+                  "maxZoom" : null,
+                  "maxClusterRadius" : 80,
+                  "zoomAnimation" : true,
+                  "showCoverageOnHover" : true,
+                  "spiderfyOnMaxZoom" : false,
+                  "chunkedLoad" : false,
+                  "lazyLoad" : true,
+                  "useClusterMarkerColorFunction" : false,
+                  "clusterMarkerColorFunction" : null
+                },
+                "label" : {
+                  "show" : true,
+                  "type" : "pattern",
+                  "pattern" : "${entityName}"
+                },
+                "tooltip" : {
+                  "show" : true,
+                  "trigger" : "click",
+                  "autoclose" : true,
+                  "type" : "pattern",
+                  "pattern" : "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Temperature:</b> ${temperature} °C<br/><small>See tooltip settings for details</small>",
+                  "offsetX" : 0,
+                  "offsetY" : -1
+                },
+                "click" : {
+                  "type" : "doNothing"
+                },
+                "edit" : {
+                  "enabledActions" : [ ],
+                  "attributeScope" : "SERVER_SCOPE",
+                  "snappable" : false
+                },
+                "dsEntityAliasId" : "344f2b24-0d18-2cd4-2640-d9cd92a33f45"
+              } ],
+              "polygons" : [ ],
+              "circles" : [ ],
+              "polylines" : [ ],
+              "additionalDataSources" : [ ],
+              "controlsPosition" : "topleft",
+              "zoomActions" : [ "scroll", "doubleClick", "controlButtons" ],
+              "scales" : [ "metric" ],
+              "dragModeButton" : false,
+              "fitMapBounds" : true,
+              "useDefaultCenterPosition" : false,
+              "defaultCenterPosition" : "0,0",
+              "defaultZoomLevel" : null,
+              "mapPageSize" : 16384,
+              "mapActionButtons" : [ ],
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "padding" : "8px"
+            },
+            "title" : "Map",
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "configMode" : "advanced",
+            "titleFont" : null,
+            "titleColor" : null,
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "iconSize" : "24px",
+            "titleIcon" : "map",
+            "iconColor" : "#1F6BDD",
+            "actions" : { },
+            "enableDataExport" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "a83393a4-15f2-04ce-a18c-f8736285da47"
+        },
+        "5ade848d-8739-e0df-5cef-75d7a48a9fcf" : {
+          "typeFullFqn" : "system.cards.html_value_card",
+          "type" : "latest",
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "344f2b24-0d18-2cd4-2640-d9cd92a33f45",
+              "dataKeys" : [ {
+                "name" : "description",
+                "type" : "attribute",
+                "label" : "description",
+                "color" : "#4caf50",
+                "settings" : { }
+              }, {
+                "name" : "title",
+                "type" : "attribute",
+                "label" : "title",
+                "color" : "#4caf50",
+                "settings" : { }
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "cardHtml" : "<div class=\"card\">\n    <div class=\"content\">\n        <div class=\"column\">\n            <h1>${title}</h1>\n            \n            <div class=\"description\">\n                ${description}\n            </div>\n        </div>\n    </div>\n</div>",
+              "cardCss" : ".card {\n    width: 100%;\n    height: 100%;\n    border: 1px solid #e5e7eb;\n    border-radius: 10px;\n    box-sizing: border-box;\n    background: #f0f6ff;\n\n    font-family:\n        -apple-system,\n        BlinkMacSystemFont,\n        \"Segoe UI\",\n        Roboto,\n        Inter,\n        Arial,\n        sans-serif;\n\n    color: #1f2937;\n    line-height: 1.55;\n    overflow: auto;\n}\n\n.card .content {\n    width: 100%;\n    min-height: 100%;\n    padding: 14px 16px;\n\n    display: flex;\n    flex-direction: row;\n    align-items: flex-start;\n    justify-content: flex-start;\n\n    box-sizing: border-box;\n}\n\n.card .content .column {\n    width: 100%;\n    min-width: 0;\n\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n/* Title */\n.card h1 {\n    position: relative;\n\n    margin: 0 0 8px 0;\n    padding: 2px 0 3px 14px;\n\n    font-size: 20px;\n    font-weight: 700;\n    line-height: 1.25;\n    text-transform: none;\n    color: #0f172a;\n}\n\n.card h1::before {\n    content: \"\";\n\n    position: absolute;\n    top: -2px;\n    bottom: -2px;\n    left: 0;\n\n    width: 4px;\n\n    background: #1f6feb;\n    border-radius: 2px;\n}\n/*.card h1 {*/\n/*    position: relative;*/\n\n/*    margin: 0 0 8px 0;*/\n/*    padding: 0 0 0 12px;*/\n\n/*    font-size: 16px;*/\n/*    font-weight: 700;*/\n/*    line-height: 40px;*/\n/*    text-transform: none;*/\n\n/*    color: #0f172a;*/\n/*}*/\n\n/*.card h1::before {*/\n/*    content: \"\";*/\n\n/*    position: absolute;*/\n/*    top: 0;*/\n/*    left: 0;*/\n\n/*    width: 4px;*/\n/*    height: 20px;*/\n\n/*    background: #1f6feb;*/\n/*    border-radius: 2px;*/\n/*}*/\n\n/* Abstract */\n.card .abstract {\n    margin: 0 0 10px 0;\n\n    font-size: 14.5px;\n    font-weight: 500;\n    line-height: 1.5;\n    color: #334155;\n}\n\n/* Description container */\n.card .description {\n    margin: 0;\n\n    font-size: 13.5px;\n    line-height: 1.55;\n    font-weight: 400;\n    color: #1f2937;\n}\n\n/* Paragraphs contained in the description attribute */\n.card .description p {\n    margin: 0 0 8px 0;\n}\n\n.card .description p:last-child {\n    margin-bottom: 0;\n}\n\n/* Emphasised text in entity attributes */\n.card .abstract strong,\n.card .description strong {\n    font-weight: 700;\n}"
+            },
+            "title" : "HTML Value Card",
+            "dropShadow" : false,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "actions" : { },
+            "enableDataExport" : false,
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "5ade848d-8739-e0df-5cef-75d7a48a9fcf"
+        },
+        "c5de3544-a041-a618-a875-7d78724c7aca" : {
+          "typeFullFqn" : "system.cards.value_card",
+          "type" : "latest",
+          "sizeX" : 3,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "c4c30428-3579-543f-3777-6089a0c02c29",
+              "dataKeys" : [ {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "Water Level",
+                "color" : "#2196f3",
+                "settings" : { },
+                "aggregationType" : "NONE",
+                "units" : "cm",
+                "decimals" : 0,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "labelPosition" : "top",
+              "layout" : "square",
+              "showLabel" : true,
+              "labelFont" : {
+                "family" : "Roboto",
+                "size" : 16,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500"
+              },
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "showIcon" : true,
+              "iconSize" : 40,
+              "iconSizeUnit" : "px",
+              "icon" : "flood",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "#0050CF",
+                "gradient" : {
+                  "advancedMode" : false,
+                  "gradient" : [ "rgba(0, 255, 0, 1)", "rgba(255, 0, 0, 1)" ],
+                  "gradientAdvanced" : [ {
+                    "source" : {
+                      "type" : "constant"
+                    },
+                    "color" : "rgba(0, 255, 0, 1)"
+                  }, {
+                    "source" : {
+                      "type" : "constant"
+                    },
+                    "color" : "rgba(255, 0, 0, 1)"
+                  } ],
+                  "minValue" : 0,
+                  "maxValue" : 100
+                },
+                "rangeList" : {
+                  "advancedMode" : false,
+                  "range" : [ ],
+                  "rangeAdvanced" : [ ]
+                },
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "valueFont" : {
+                "family" : "Roboto",
+                "size" : 52,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500"
+              },
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "showDate" : true,
+              "dateFormat" : {
+                "format" : null,
+                "lastUpdateAgo" : true,
+                "custom" : false
+              },
+              "dateFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500"
+              },
+              "dateColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.38)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "autoScale" : true,
+              "padding" : ""
+            },
+            "title" : "Value card",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "units" : "m",
+            "decimals" : 3,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : { },
+            "configMode" : "advanced",
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "enableDataExport" : false,
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "titleFont" : {
+              "size" : 12,
+              "sizeUnit" : "px",
+              "family" : null,
+              "weight" : null,
+              "style" : null,
+              "lineHeight" : "1.6"
+            },
+            "titleIcon" : "",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "14px",
+            "timewindowStyle" : {
+              "showIcon" : true,
+              "iconSize" : "14px",
+              "icon" : "query_builder",
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : null,
+                "weight" : null,
+                "style" : null,
+                "lineHeight" : "1"
+              },
+              "color" : null
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "c5de3544-a041-a618-a875-7d78724c7aca"
+        },
+        "a1b12fa1-1d8d-bff1-b5a4-bfbf8c016d21" : {
+          "typeFullFqn" : "system.cards.value_card",
+          "type" : "latest",
+          "sizeX" : 3,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "c4c30428-3579-543f-3777-6089a0c02c29",
+              "dataKeys" : [ {
+                "name" : "distance",
+                "type" : "timeseries",
+                "label" : "direct measurement",
+                "color" : "#2196f3",
+                "settings" : { },
+                "aggregationType" : "NONE",
+                "units" : "cm",
+                "decimals" : 0,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "layout" : "square",
+              "autoScale" : true,
+              "showLabel" : true,
+              "labelFont" : {
+                "family" : "Roboto",
+                "size" : 16,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "1.5"
+              },
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "showIcon" : true,
+              "iconSize" : 40,
+              "iconSizeUnit" : "px",
+              "icon" : "straighten",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "#0050CF",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';",
+                "gradient" : {
+                  "advancedMode" : false,
+                  "gradient" : [ "rgba(0, 255, 0, 1)", "rgba(255, 0, 0, 1)" ],
+                  "gradientAdvanced" : [ {
+                    "source" : {
+                      "type" : "constant"
+                    },
+                    "color" : "rgba(0, 255, 0, 1)"
+                  }, {
+                    "source" : {
+                      "type" : "constant"
+                    },
+                    "color" : "rgba(255, 0, 0, 1)"
+                  } ],
+                  "minValue" : 0,
+                  "maxValue" : 100
+                },
+                "rangeList" : {
+                  "advancedMode" : false,
+                  "range" : [ ],
+                  "rangeAdvanced" : [ ]
+                }
+              },
+              "valueFont" : {
+                "family" : "Roboto",
+                "size" : 52,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "100%"
+              },
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "showDate" : true,
+              "dateFormat" : {
+                "format" : null,
+                "lastUpdateAgo" : true,
+                "custom" : false,
+                "auto" : false
+              },
+              "dateFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "1.33"
+              },
+              "dateColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.38)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "padding" : ""
+            },
+            "title" : "Value card",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "units" : "cm",
+            "decimals" : 1,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : { },
+            "configMode" : "advanced",
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "enableDataExport" : false,
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "titleFont" : {
+              "size" : 12,
+              "sizeUnit" : "px",
+              "family" : null,
+              "weight" : null,
+              "style" : null,
+              "lineHeight" : "1.6"
+            },
+            "titleIcon" : "",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "14px",
+            "timewindowStyle" : {
+              "showIcon" : true,
+              "iconSize" : "14px",
+              "icon" : "query_builder",
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : null,
+                "weight" : null,
+                "style" : null,
+                "lineHeight" : "1"
+              },
+              "color" : null
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "a1b12fa1-1d8d-bff1-b5a4-bfbf8c016d21"
+        },
+        "72f5f9f9-05f2-4a18-2f83-aa511f5856a0" : {
+          "typeFullFqn" : "system.time_series_chart",
+          "type" : "timeseries",
+          "sizeX" : 8,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "c4c30428-3579-543f-3777-6089a0c02c29",
+              "dataKeys" : [ {
+                "name" : "waterLevel",
+                "type" : "timeseries",
+                "label" : "Water Level",
+                "color" : "#048AD3",
+                "settings" : {
+                  "yAxisId" : "default",
+                  "showInLegend" : true,
+                  "type" : "line",
+                  "lineSettings" : {
+                    "showLine" : true,
+                    "step" : false,
+                    "stepType" : "start",
+                    "smooth" : false,
+                    "lineType" : "solid",
+                    "lineWidth" : 3,
+                    "showPoints" : true,
+                    "showPointLabel" : false,
+                    "pointLabelPosition" : "top",
+                    "pointLabelFont" : {
+                      "family" : "Roboto",
+                      "size" : 11,
+                      "sizeUnit" : "px",
+                      "style" : "normal",
+                      "weight" : "400",
+                      "lineHeight" : "1"
+                    },
+                    "pointLabelColor" : "rgba(0, 0, 0, 0.76)",
+                    "enablePointLabelBackground" : false,
+                    "pointLabelBackground" : "rgba(255,255,255,0.56)",
+                    "pointShape" : "emptyCircle",
+                    "pointSize" : 4,
+                    "fillAreaSettings" : {
+                      "type" : "none",
+                      "opacity" : 0.4,
+                      "gradient" : {
+                        "start" : 100,
+                        "end" : 0
+                      }
+                    }
+                  },
+                  "barSettings" : {
+                    "showBorder" : false,
+                    "borderWidth" : 2,
+                    "borderRadius" : 0,
+                    "showLabel" : false,
+                    "labelPosition" : "top",
+                    "labelFont" : {
+                      "family" : "Roboto",
+                      "size" : 11,
+                      "sizeUnit" : "px",
+                      "style" : "normal",
+                      "weight" : "400",
+                      "lineHeight" : "1"
+                    },
+                    "labelColor" : "rgba(0, 0, 0, 0.76)",
+                    "enableLabelBackground" : false,
+                    "labelBackground" : "rgba(255,255,255,0.56)",
+                    "backgroundSettings" : {
+                      "type" : "none",
+                      "opacity" : 0.4,
+                      "gradient" : {
+                        "start" : 100,
+                        "end" : 0
+                      }
+                    }
+                  },
+                  "comparisonSettings" : {
+                    "showValuesForComparison" : false,
+                    "comparisonValuesLabel" : "",
+                    "color" : ""
+                  },
+                  "dataHiddenByDefault" : false,
+                  "tooltipValueFormatter" : null
+                },
+                "aggregationType" : null,
+                "units" : {
+                  "from" : "cm",
+                  "METRIC" : "cm",
+                  "IMPERIAL" : "ft",
+                  "HYBRID" : "m"
+                },
+                "decimals" : 0,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              },
+              "latestDataKeys" : [ ]
+            } ],
+            "showTitle" : true,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "showLegend" : true,
+              "legendConfig" : {
+                "direction" : "column",
+                "position" : "bottom",
+                "sortDataKeys" : false,
+                "showMin" : true,
+                "showMax" : true,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : true,
+                "valueFormat" : null
+              },
+              "thresholds" : [ ],
+              "dataZoom" : true,
+              "stack" : false,
+              "yAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "left",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "xAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "bottom",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 10,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "ticksFormat" : { },
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "legendLabelFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "legendLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "showTooltip" : true,
+              "tooltipTrigger" : "axis",
+              "tooltipValueFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "16px"
+              },
+              "tooltipValueColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipShowDate" : true,
+              "tooltipDateFormat" : {
+                "format" : null,
+                "lastUpdateAgo" : false,
+                "custom" : false,
+                "auto" : true,
+                "autoDateFormatSettings" : { }
+              },
+              "tooltipDateFont" : {
+                "family" : "Roboto",
+                "size" : 11,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "tooltipDateColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipDateInterval" : true,
+              "tooltipBackgroundColor" : "rgba(255, 255, 255, 0.76)",
+              "tooltipBackgroundBlur" : 4,
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "yAxes" : {
+                "default" : {
+                  "units" : null,
+                  "decimals" : 0,
+                  "show" : true,
+                  "label" : "",
+                  "labelFont" : {
+                    "family" : "Roboto",
+                    "size" : 12,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "600",
+                    "lineHeight" : "1"
+                  },
+                  "labelColor" : "rgba(0, 0, 0, 0.54)",
+                  "position" : "left",
+                  "showTickLabels" : true,
+                  "tickLabelFont" : {
+                    "family" : "Roboto",
+                    "size" : 12,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "400",
+                    "lineHeight" : "1"
+                  },
+                  "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                  "ticksFormatter" : null,
+                  "showTicks" : true,
+                  "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                  "showLine" : true,
+                  "lineColor" : "rgba(0, 0, 0, 0.54)",
+                  "showSplitLines" : true,
+                  "splitLinesColor" : "rgba(0, 0, 0, 0.12)",
+                  "id" : "default",
+                  "order" : 0,
+                  "min" : {
+                    "type" : "constant",
+                    "value" : null,
+                    "entityAlias" : null
+                  },
+                  "max" : {
+                    "type" : "constant",
+                    "value" : null,
+                    "entityAlias" : null
+                  }
+                }
+              },
+              "noAggregationBarWidthSettings" : {
+                "strategy" : "group",
+                "groupWidth" : {
+                  "relative" : true,
+                  "relativeWidth" : 2,
+                  "absoluteWidth" : 1000
+                },
+                "barWidth" : {
+                  "relative" : true,
+                  "relativeWidth" : 2,
+                  "absoluteWidth" : 1000
+                }
+              },
+              "animation" : {
+                "animation" : true,
+                "animationThreshold" : 2000,
+                "animationDuration" : 500,
+                "animationEasing" : "cubicOut",
+                "animationDelay" : 0,
+                "animationDurationUpdate" : 300,
+                "animationEasingUpdate" : "cubicOut",
+                "animationDelayUpdate" : 0
+              },
+              "padding" : "12px",
+              "comparisonEnabled" : false,
+              "timeForComparison" : "previousInterval",
+              "comparisonCustomIntervalValue" : 7200000,
+              "comparisonXAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "top",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 10,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "ticksFormat" : { },
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "grid" : {
+                "show" : false,
+                "backgroundColor" : null,
+                "borderWidth" : 1,
+                "borderColor" : "#ccc"
+              },
+              "legendColumnTitleFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "legendColumnTitleColor" : "rgba(0, 0, 0, 0.38)",
+              "legendValueFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "16px"
+              },
+              "legendValueColor" : "rgba(0, 0, 0, 0.87)",
+              "tooltipLabelFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipHideZeroValues" : null,
+              "tooltipStackedShowTotal" : false
+            },
+            "title" : "Water Level",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : null,
+            "mobileHeight" : null,
+            "configMode" : "advanced",
+            "actions" : { },
+            "showTitleIcon" : false,
+            "titleIcon" : "thermostat",
+            "iconColor" : "#1F6BDD",
+            "useDashboardTimewindow" : true,
+            "titleFont" : {
+              "size" : 16,
+              "sizeUnit" : "px",
+              "family" : "Roboto",
+              "weight" : "500",
+              "style" : "normal",
+              "lineHeight" : "24px"
+            },
+            "titleColor" : "rgba(0, 0, 0, 0.87)",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "units" : "",
+            "decimals" : null,
+            "noDataDisplayMessage" : "",
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "iconSize" : "0px",
+            "timewindowStyle" : {
+              "showIcon" : false,
+              "iconSize" : "24px",
+              "icon" : null,
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : "Roboto",
+                "weight" : "400",
+                "style" : "normal",
+                "lineHeight" : "16px"
+              },
+              "color" : "rgba(0, 0, 0, 0.38)",
+              "displayTypePrefix" : true
+            },
+            "enableDataExport" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "72f5f9f9-05f2-4a18-2f83-aa511f5856a0"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "overview",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "40089d30-36f7-da61-9939-7d18cc10fbd0" : {
+                  "sizeX" : 15,
+                  "sizeY" : 5,
+                  "mobileHeight" : 5,
+                  "resizable" : true,
+                  "row" : 20,
+                  "col" : 0,
+                  "mobileOrder" : 7
+                },
+                "8ac87825-9267-e11c-3cfb-987a3a314266" : {
+                  "sizeX" : 15,
+                  "sizeY" : 6,
+                  "mobileHeight" : 5,
+                  "row" : 25,
+                  "col" : 0,
+                  "resizable" : true,
+                  "mobileOrder" : 8
+                },
+                "ee696f76-a474-b03e-ea32-f2719fab7135" : {
+                  "sizeX" : 6,
+                  "sizeY" : 8,
+                  "row" : 6,
+                  "col" : 0,
+                  "resizable" : false,
+                  "mobileOrder" : 3,
+                  "mobileHeight" : 5
+                },
+                "a83393a4-15f2-04ce-a18c-f8736285da47" : {
+                  "sizeX" : 6,
+                  "sizeY" : 6,
+                  "resizable" : false,
+                  "row" : 0,
+                  "col" : 9,
+                  "mobileOrder" : 2,
+                  "mobileHeight" : 5,
+                  "mobileHide" : true
+                },
+                "5ade848d-8739-e0df-5cef-75d7a48a9fcf" : {
+                  "sizeX" : 9,
+                  "sizeY" : 6,
+                  "resizable" : true,
+                  "row" : 0,
+                  "col" : 0,
+                  "mobileOrder" : 1,
+                  "mobileHeight" : 5
+                },
+                "c5de3544-a041-a618-a875-7d78724c7aca" : {
+                  "sizeX" : 9,
+                  "sizeY" : 4,
+                  "row" : 6,
+                  "col" : 6,
+                  "resizable" : true,
+                  "mobileOrder" : 4,
+                  "mobileHeight" : 4
+                },
+                "a1b12fa1-1d8d-bff1-b5a4-bfbf8c016d21" : {
+                  "sizeX" : 9,
+                  "sizeY" : 4,
+                  "row" : 10,
+                  "col" : 6,
+                  "resizable" : true,
+                  "mobileOrder" : 5,
+                  "mobileHeight" : 4
+                },
+                "72f5f9f9-05f2-4a18-2f83-aa511f5856a0" : {
+                  "sizeX" : 15,
+                  "sizeY" : 6,
+                  "mobileOrder" : 6,
+                  "mobileHeight" : 5,
+                  "resizable" : true,
+                  "row" : 14,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "minColumns" : 24,
+                "viewFormat" : "grid",
+                "autoFillHeight" : false,
+                "rowHeight" : 70,
+                "mobileAutoFillHeight" : false,
+                "mobileRowHeight" : 70
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "344f2b24-0d18-2cd4-2640-d9cd92a33f45" : {
+          "id" : "344f2b24-0d18-2cd4-2640-d9cd92a33f45",
+          "alias" : "Station",
+          "filter" : {
+            "type" : "stateEntity",
+            "resolveMultiple" : false,
+            "stateEntityParamName" : null,
+            "defaultStateEntity" : {
+              "entityType" : "ASSET",
+              "id" : "f2a31330-8436-11f1-a387-c9cb240000d9"
+            }
+          }
+        },
+        "c4c30428-3579-543f-3777-6089a0c02c29" : {
+          "id" : "c4c30428-3579-543f-3777-6089a0c02c29",
+          "alias" : "Distance Sensor",
+          "filter" : {
+            "type" : "deviceSearchQuery",
+            "resolveMultiple" : false,
+            "rootStateEntity" : true,
+            "stateEntityParamName" : null,
+            "defaultStateEntity" : {
+              "entityType" : "ASSET",
+              "id" : "f2a31330-8436-11f1-a387-c9cb240000d9"
+            },
+            "rootEntity" : null,
+            "direction" : "FROM",
+            "maxLevel" : 1,
+            "fetchLastLevelOnly" : false,
+            "relationType" : "Contains",
+            "deviceTypes" : [ "Milesight EM500-SMTC", "Milesight EM500-UDL", "Milesight EM500-UDL test" ]
+          }
+        }
+      },
+      "filters" : { },
+      "timewindow" : {
+        "selectedTab" : 0,
+        "realtime" : {
+          "realtimeType" : 0,
+          "interval" : 1800000,
+          "timewindowMs" : 604800000
+        },
+        "aggregation" : {
+          "type" : "AVG"
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : false,
+        "showEntitiesSelect" : false,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : false,
+        "toolbarAlwaysOpen" : true,
+        "titleColor" : "rgba(0,0,0,0.870588)",
+        "showDashboardLogo" : false,
+        "hideToolbar" : false,
+        "showFilters" : false,
+        "showUpdateDashboardImage" : false
+      }
+    },
+    "name" : "Hydrological station",
+    "resources" : null,
+    "assignedCustomers" : null,
+    "customerId" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "e8be5570-84de-11f1-a387-c9cb240000d9"
+    },
+    "ownerId" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
