@@ -1,0 +1,117 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "237f67a2-84e7-11f1-a387-c9cb240000d9"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "19a372d0-84e7-11f1-a387-c9cb240000d9"
+    },
+    "name" : "Environmental Monitoring Station",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "True"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 2,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 0,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 51,
+        "layoutY" : 252
+      },
+      "configuration" : {
+        "messageTypes" : [ "ENTITY_CREATED" ]
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "237f67a2-84e7-11f1-a387-c9cb240000d9"
+      },
+      "name" : "initialize default attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 52,
+        "layoutY" : 353
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var attributes = {\n    latitude: 0.0001,\n    longitude: 0.0001,\n    title: \"N/A\",\n    description: \"N/A\",\n    contact: \"[]\", /* List your preferred contact structures */\n    backgroundXl: \"\",\n    backgroundXs: \"\",\n    media: [] /* list your preferred media (image) structures */\n};\n\nmetadata.scope = \"SERVER_SCOPE\";\nmetadata.notifyDevice = \"false\";\n\nreturn {\n    msg: attributes,\n    metadata: metadata,\n    msgType: \"POST_ATTRIBUTES_REQUEST\"\n};\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7545b90-84fa-11f1-a387-c9cb240000d9"
+      },
+      "name" : "create default attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 51,
+        "layoutY" : 453
+      },
+      "configuration" : {
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : false
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7545b91-84fa-11f1-a387-c9cb240000d9"
+      },
+      "name" : "save attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
