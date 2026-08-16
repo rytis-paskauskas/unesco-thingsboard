@@ -1,0 +1,251 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Debugging and modularization of the EM500-UDL decoder. \nAuthor: Rytis Paškauskas"
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "da533dc0-827c-11f1-a387-c9cb240000d9"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "b1373690-827b-11f1-a387-c9cb240000d9"
+    },
+    "name" : "EM500-UDL uplink",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "True"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "False"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 3,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 3,
+      "type" : "False"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 4,
+      "type" : "True"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 6,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 6,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 5,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 0,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "Checks input format compliance",
+        "layoutX" : 376,
+        "layoutY" : 151
+      },
+      "configuration" : {
+        "messageNames" : [ "fPort", "frmPayload" ],
+        "metadataNames" : [ ],
+        "checkAllKeys" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784551005644,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "da533dc0-827c-11f1-a387-c9cb240000d9"
+      },
+      "name" : "fields present?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "If this is uplink then fPort == 85",
+        "layoutX" : 378,
+        "layoutY" : 277
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.fPort == 85;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784551020643,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "da5364d0-827c-11f1-a387-c9cb240000d9"
+      },
+      "name" : "fPort valid?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 727,
+        "layoutY" : 153
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "return {\n    msg: {\n        error: \"Required fields not found: fPort, frmPayload\"}, \n        metadata: metadata, \n        msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "da5364d1-827c-11f1-a387-c9cb240000d9"
+      },
+      "name" : "exit with error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 726,
+        "layoutY" : 280
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "return {\n    msg: {\n        error: \"Expected fPort=85\"\n    }, \n    metadata: metadata, \n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "da5364d2-827c-11f1-a387-c9cb240000d9"
+      },
+      "name" : "exit with error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 734,
+        "layoutY" : 401
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// Milesight EM500-UDL\n// Uplink-only telemetry decoder\n// Strict ThingsBoard TBEL version\n// Example payload:\n// {\n//     \"fPort\": 85,\n//     \"frmPayload\": \"A4LnHA==\"\n// }\n\nvar bytes = base64ToBytesList(msg.frmPayload);\nvar decoded = {};\n\nvar i = 0;\nvar length = bytes.size();\nvar error = null;\n\n\n// -----------------------------------------------------------------------------\n// Byte-reading helpers\n// -----------------------------------------------------------------------------\n\n// function u8(index) {\n//     return bytes[index] & 0xFF;\n// }\nfunction u8(index) {\n    return bytes.get(index) & 0xFF;\n}\n\nfunction readUInt16LE(index) {\n    return u8(index)\n        + u8(index + 1) * 256;\n}\n\nfunction readUInt32LE(index) {\n    return u8(index)\n        + u8(index + 1) * 256\n        + u8(index + 2) * 65536\n        + u8(index + 3) * 16777216;\n}\n\n\n// -----------------------------------------------------------------------------\n// Value mappings\n// -----------------------------------------------------------------------------\n\nfunction readDistanceAlarm(value) {\n    if (value == 0) {\n        return \"normal\";\n    }\n\n    if (value == 1) {\n        return \"threshold_alarm\";\n    }\n\n    if (value == 2) {\n        return \"mutation_alarm\";\n    }\n\n    return \"unknown\";\n}\n\n\n// -----------------------------------------------------------------------------\n// Main uplink parser\n// -----------------------------------------------------------------------------\n\nwhile (i < length && error == null) {\n\n    // Every Milesight record must contain at least:\n    // channel ID + channel type.\n    if (i + 2 > length) {\n        error = \"truncated channel header at byte \" + i;\n        break;\n    }\n\n    var channelId = u8(i);\n    var channelType = u8(i + 1);\n\n    i = i + 2;\n\n\n    // -------------------------------------------------------------------------\n    // Battery\n    // Channel: 01 75\n    // Data: 1 byte, percentage\n    // -------------------------------------------------------------------------\n\n    if (channelId == 0x01 && channelType == 0x75) {\n\n        if (i + 1 > length) {\n            error = \"truncated battery record at byte \" + (i - 2);\n            break;\n        }\n\n        decoded.put(\"battery\", u8(i));\n\n        i = i + 1;\n    }\n\n\n    // -------------------------------------------------------------------------\n    // Distance\n    // Channel: 03 82\n    // Data: uint16 little-endian, unit 0.1 cm\n    // -------------------------------------------------------------------------\n\n    else if (channelId == 0x03 && channelType == 0x82) {\n\n        if (i + 2 > length) {\n            error = \"truncated distance record at byte \" + (i - 2);\n            break;\n        }\n\n        decoded.put(\n            \"distance\",\n            readUInt16LE(i) / 10.0\n        );\n\n        i = i + 2;\n    }\n\n\n    // -------------------------------------------------------------------------\n    // Distance alarm / mutation\n    // Channel: 83 E9\n    //\n    // Data:\n    //   bytes 0-1: distance\n    //   bytes 2-3: distance mutation\n    //   byte  4:   alarm status\n    // -------------------------------------------------------------------------\n\n    else if (channelId == 0x83 && channelType == 0xE9) {\n\n        if (i + 5 > length) {\n            error = \"truncated distance alarm record at byte \" + (i - 2);\n            break;\n        }\n\n        decoded.put(\n            \"distance\",\n            readUInt16LE(i) / 10.0\n        );\n\n        decoded.put(\n            \"distance_mutation\",\n            readUInt16LE(i + 2) / 10.0\n        );\n\n        decoded.put(\n            \"distance_alarm\",\n            readDistanceAlarm(u8(i + 4))\n        );\n\n        i = i + 5;\n    }\n\n\n    // -------------------------------------------------------------------------\n    // Historical distance record\n    // Channel: 20 CE\n    //\n    // Data:\n    //   bytes 0-3: Unix timestamp\n    //   bytes 4-5: distance\n    // -------------------------------------------------------------------------\n\n    else if (channelId == 0x20 && channelType == 0xCE) {\n\n        if (i + 6 > length) {\n            error = \"truncated history record at byte \" + (i - 2);\n            break;\n        }\n\n        var point = decodeToJson(\"{}\");\n\n        point.put(\n            \"timestamp\",\n            readUInt32LE(i)\n        );\n\n        point.put(\n            \"distance\",\n            readUInt16LE(i + 4) / 10.0\n        );\n\n        var history = decoded.get(\"history\");\n\n        if (history == null) {\n            history = [];\n            decoded.put(\"history\", history);\n        }\n\n        history.push(point);\n\n        i = i + 6;\n    }\n\n\n    // -------------------------------------------------------------------------\n    // Unknown or unsupported uplink channel\n    // -------------------------------------------------------------------------\n\n    else {\n        error =\n            \"unsupported uplink channel at byte \"\n            + (i - 2)\n            + \": channel_id=0x\"\n            + Integer.toHexString(channelId)\n            + \", channel_type=0x\"\n            + Integer.toHexString(channelType);\n    }\n}\n\n\n// -----------------------------------------------------------------------------\n// Error reporting\n// -----------------------------------------------------------------------------\n\nif (error != null) {\n    decoded.put(\"error\", error);\n}\n\n\n// -----------------------------------------------------------------------------\n// Converter result\n// -----------------------------------------------------------------------------\n\nreturn {\n    msg: decoded,\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784551020643,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "3c85d510-827e-11f1-a387-c9cb240000d9"
+      },
+      "name" : "uplink handling",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1082,
+        "layoutY" : 402
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784551031851,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "144da810-8397-11f1-a387-c9cb240000d9"
+      },
+      "name" : "success",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainOutputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1075,
+        "layoutY" : 153
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784551031851,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "144da811-8397-11f1-a387-c9cb240000d9"
+      },
+      "name" : "error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainOutputNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
