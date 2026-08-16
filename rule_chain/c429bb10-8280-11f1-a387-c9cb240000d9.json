@@ -1,0 +1,463 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Debugging and modularization of Barani Meteo decoders. \nAuthor: Rytis Paškauskas"
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "c7b061e0-8743-11f1-a387-c9cb240000d9"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "c429bb10-8280-11f1-a387-c9cb240000d9"
+    },
+    "name" : "Barani Meteo Helix uplink",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "True"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "False"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 3,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 3,
+      "type" : "False"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 4,
+      "type" : "True"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 6,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 5,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 5,
+      "type" : "False"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 7,
+      "type" : "True"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 8,
+      "type" : "False"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 10,
+      "type" : "True"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 5,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 5,
+      "type" : "False"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 9,
+      "type" : "True"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 12,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 12,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 0,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "Checks input format compliance",
+        "layoutX" : 403,
+        "layoutY" : 154
+      },
+      "configuration" : {
+        "messageNames" : [ "fPort", "frmPayload", "attributes" ],
+        "metadataNames" : [ "deviceName" ],
+        "checkAllKeys" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893049787,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c7b061e0-8743-11f1-a387-c9cb240000d9"
+      },
+      "name" : "fields present?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "If this is uplink then fPort == 85",
+        "layoutX" : 403,
+        "layoutY" : 257
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return msg.fPort == 1;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893049787,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c7b088f0-8743-11f1-a387-c9cb240000d9"
+      },
+      "name" : "fPort valid?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 753,
+        "layoutY" : 158
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "return {\n    msg: {\n        error: \"Missing fields in message and/or metadata.\"}, \n        metadata: metadata, \n        msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c7b088f1-8743-11f1-a387-c9cb240000d9"
+      },
+      "name" : "exit with error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 754,
+        "layoutY" : 259
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "return {\n    msg: {\n        error: \"Not an uplink fPort\"\n    }, \n    metadata: metadata, \n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c7b088f2-8743-11f1-a387-c9cb240000d9"
+      },
+      "name" : "exit with error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Safeguarding for correct timestamp",
+        "layoutX" : 401,
+        "layoutY" : 354
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var decoderVersion = null;\nif (msg.attributes != null) {\n    var attrs = msg.attributes;\n    if (attrs.deviceEUI != null) {\n        dev = attrs.deviceEUI;\n        // make sure it's got 4 symbols.\n        if (dev.length() >= 4) {\n\n            if (dev.substring(0, 4) == \"AC1F\") {\n                // RAK radio chip\n                decoderVersion = \"Gen2\";\n            } else if (dev.substring(0, 4) ==\n                // RN \"Microchip\" radio chip\n                \"0004\") {\n                decoderVersion = \"Gen1\";\n            }\n        }\n    }\n}\n\nif (decoderVersion != null) {\n    if (msg.attributes != null) {\n        msg.attributes.decoderVersion = decoderVersion;\n    } else {\n        msg.attributes = {\n            decoderVersion: decoderVersion\n        };\n    }\n}\n\nreturn {\n    msg: msg,\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893038054,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "976b16e0-874f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "compute decoder version",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1103,
+        "layoutY" : 355
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "return {\n    msg: {\n        error: \"Failed to identify decoder version\"\n    }, \n    metadata: metadata, \n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "976b16e1-874f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "exit with error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 750,
+        "layoutY" : 353
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "return (msg.attributes != null && msg.attributes.decoderVersion != null);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893210660,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "976b16e2-874f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "have version",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 754,
+        "layoutY" : 456
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "if (msg.attributes != null) {\n    var attrs = msg.attributes;\n    if (attrs.decoderVersion != null && attrs.decoderVersion == \"Gen2\") {\n        return true;\n    }\n}\nreturn false;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893237425,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "dc3ae750-874f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "it's Gen 2",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1095,
+        "layoutY" : 459
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return msg.temperature > 20;",
+        "tbelScript" : "if (msg.attributes != null) {\n    var attrs = msg.attributes;\n    if (attrs.decoderVersion != null && attrs.decoderVersion == \"Gen1\") {\n        return true;\n    }\n}\nreturn false;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893237425,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "dc3ae751-874f-11f1-a387-c9cb240000d9"
+      },
+      "name" : "it's Gen 1",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "\nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
+        "layoutX" : 1097,
+        "layoutY" : 552
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// {\"frmPayload\": \"bxeAAqUtgAAAXf8=\", \"fPort\": 1, \"fCnt\": 999}\n// {\"frmPayload\": \"bz+EDtMd4QEeAf8=\", \"fPort\": 1, \"fCnt\": 999}\n\n// Utilities by Rytis 2026-04-02\n\nfunction round0(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x);\n}\n\nfunction round1(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x * 10.0) / 10.0;\n}\n\nfunction round2(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x * 100.0) / 100.0;\n}\n\nfunction error_msg(text) {\n    return {\n        msg: {\n            error: text,\n            raw: msg.frmPayload,\n            fCnt: msg.fCnt\n        },\n        metadata: metadata != null ? metadata : {},\n        msgType: msgType != null ? msgType : \"POST_TELEMETRY_REQUEST\"\n    };\n}\n\nfunction bytesToBits(bytes) {\n    var bits = [];\n\n    for (var i = 0; i < bytes.length; i++) {\n        var b = bytes[i];\n\n        // normalize signed → unsigned\n        if (b < 0) {\n            b += 256;\n        }\n\n        // extract bits (MSB → LSB)\n        for (var j = 7; j >= 0; j--) {\n            bits.push((b >> j) & 1);\n        }\n    }\n\n    return bits;\n}\n// Base64 to bits.\nfunction newBitReader(b64) {\n    if (b64 == null) {\n        return null;\n    }\n\n    var raw = base64ToBytesList(b64);\n    var bytes = [];\n    for (var i = 0; i < raw.length; i++) {\n        var b = raw[i];\n        if (b < 0) {\n            b = b + 256;\n        }\n        bytes.push(b);\n    }\n\n    if (bytes.length == 0) {\n        return null;\n    }\n    var bits = bytesToBits(bytes);\n\n    return {\n        repr: bits,\n        pos: 0\n    };\n}\n\nfunction readBits(br, N) {\n    if (br == null) {\n        return null;\n    }\n\n    if (br.repr == null) {\n        return null;\n    }\n\n    if (br.pos == null) {\n        return null;\n    }\n\n    if (N == null || N <= 0) {\n        return 0;\n    }\n\n    var len = br.repr.length;\n\n    if (br.pos + N > len) {\n        return null;\n    }\n\n    var value = 0;\n    var i = 0;\n\n    while (i < N) {\n        var idx = br.pos;\n\n        // safe index check (TBEL defensive)\n        if (idx < 0 || idx >= len) {\n            return null;\n        }\n\n        var bit = br.repr[idx];\n\n        // ensure valid bit\n        if (bit == null) {\n            return null;\n        }\n\n        if (bit != 0 && bit != 1) {\n            return null;\n        }\n\n        // accumulate (MSB-first)\n        value = (value * 2) + bit;\n\n        // advance position\n        br.pos = br.pos + 1;\n        i = i + 1;\n    }\n\n    return value;\n}\n\n\nvar br = newBitReader(msg.frmPayload);\n\nif (br == null) {\n    return error_msg(\"invalid_payload\");\n}\nvar len = br.repr.length;\n\nvar batt = null;\nvar t = null;\nvar tm = null;\nvar tx = null;\nvar h = null;\nvar p = null;\nvar s = null;\nvar sx = null;\nvar temp = null;\n\n// 11 byte Payload 11*8 = 88.\nif (br.repr.length == 88) {\n    temp = readBits(br, 2);\n    if (temp != 1) {\n        return error_msg(\"payload_not_type_1\");\n    }\n    temp = readBits(br, 5);\n    batt = (temp!=null && temp<parseInt(1<<5) ? round1(3.0 + (0.05 * temp)) : null);\n    temp = readBits(br, 11);\n    t    = (temp!=null && temp<parseInt(1<<11) ? round1((0.1 * temp) - 100) : null);\n    if (t!=null) {\n        temp = readBits(br, 6);\n        tm   = (temp!=null && temp<parseInt(1<<6) ? round1(t - (0.1 * temp)) : null);\n        temp = readBits(br, 6);\n        tx   = (temp!=null && temp<parseInt(1<<6) ? round1(t + (0.1 * temp)) : null);\n    }\n    temp = readBits(br, 9);\n    h    = (temp!=null && temp<parseInt(1<<9) ? round1(0.2 * temp) : null);\n    temp = readBits(br, 14);\n    p    = (temp!=null && temp<parseInt(1<<14) ? round2(500 + (0.05 * temp)) : null);\n    temp=readBits(br, 10);\n    s    = (temp!=null && temp<parseInt(1<<10) ? 2*temp: null);\n    if (s != null) {\n        temp = readBits(br, 9);\n        sx   = (temp!=null && temp<parseInt(1<<9) ? s + 2*temp: null);\n    }\n}\n\nreturn {\n    msg: {\n        helix_batt: batt, \n        t: t, \n        tm: tm, \n        tx: tx, \n        h: h, \n        p: p, \n        s: s, \n        sx: sx\n    },\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893249346,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "10980e10-8750-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Gen1 b64 decoder",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "\nTranscribed to TBEL from https://github.com/Milesight-IoT/SensorDecoders/blob/main/ft-series/ft101/ft101-decoder.js\n",
+        "layoutX" : 748,
+        "layoutY" : 550
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var decoded = {};\nvar b64 = msg.data;\n\n// Base64 → binary string\nvar binaryStr = atob(b64);\n\n// Binary string → byte array\nvar bytes = new Uint8Array(binaryStr.length);\nfor (var i = 0; i < binaryStr.length; i++) {\n    bytes[i] = binaryStr.charCodeAt(i) & 0xFF;\n}\n\ndecoded.bytes= bytes;\n\n\nreturn {msg: decoded, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// {\"frmPayload\": \"bxeAAqUtgAAAXf8=\", \"fPort\": 1, \"fCnt\": 999}\n// {\"frmPayload\": \"bz+EDtMd4QEeAf8=\", \"fPort\": 1, \"fCnt\": 999}\n\n// Utilities by Rytis 2026-04-02\n\nfunction round0(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x);\n}\n\nfunction round1(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x * 10.0) / 10.0;\n}\n\nfunction round2(x) {\n    if (x == null) {\n        return null;\n    }\n    return Math.round(x * 100.0) / 100.0;\n}\n\nfunction error_msg(text) {\n    return {\n        msg: {\n            error: text,\n            raw: msg.frmPayload,\n            fCnt: msg.fCnt\n        },\n        metadata: metadata != null ? metadata : {},\n        msgType: msgType != null ? msgType : \"POST_TELEMETRY_REQUEST\"\n    };\n}\n\nfunction bytesToBits(bytes) {\n    var bits = [];\n\n    for (var i = 0; i < bytes.length; i++) {\n        var b = bytes[i];\n\n        // normalize signed → unsigned\n        if (b < 0) {\n            b += 256;\n        }\n\n        // extract bits (MSB → LSB)\n        for (var j = 7; j >= 0; j--) {\n            bits.push((b >> j) & 1);\n        }\n    }\n\n    return bits;\n}\n// Base64 to bits.\nfunction newBitReader(b64) {\n    if (b64 == null) {\n        return null;\n    }\n\n    var raw = base64ToBytesList(b64);\n    var bytes = [];\n    for (var i = 0; i < raw.length; i++) {\n        var b = raw[i];\n        if (b < 0) {\n            b = b + 256;\n        }\n        bytes.push(b);\n    }\n\n    if (bytes.length == 0) {\n        return null;\n    }\n    var bits = bytesToBits(bytes);\n\n    return {\n        repr: bits,\n        pos: 0\n    };\n}\n\nfunction readBits(br, N) {\n    if (br == null) {\n        return null;\n    }\n\n    if (br.repr == null) {\n        return null;\n    }\n\n    if (br.pos == null) {\n        return null;\n    }\n\n    if (N == null || N <= 0) {\n        return 0;\n    }\n\n    var len = br.repr.length;\n\n    if (br.pos + N > len) {\n        return null;\n    }\n\n    var value = 0;\n    var i = 0;\n\n    while (i < N) {\n        var idx = br.pos;\n\n        // safe index check (TBEL defensive)\n        if (idx < 0 || idx >= len) {\n            return null;\n        }\n\n        var bit = br.repr[idx];\n\n        // ensure valid bit\n        if (bit == null) {\n            return null;\n        }\n\n        if (bit != 0 && bit != 1) {\n            return null;\n        }\n\n        // accumulate (MSB-first)\n        value = (value * 2) + bit;\n\n        // advance position\n        br.pos = br.pos + 1;\n        i = i + 1;\n    }\n\n    return value;\n}\n\n\nvar br = newBitReader(msg.frmPayload);\n\nif (br == null) {\n    return error_msg(\"Invalid payload\");\n    \n}\nvar len = br.repr.length;\n\nvar batt = null;\nvar t = null;\nvar tm = null;\nvar tx = null;\nvar h = null;\nvar p = null;\nvar s = null;\nvar sx = null;\nvar temp = null;\n\n\n// how many bytes? \n// 11 byte Payload 11*8 = 88.\nif (br.repr.length < 10000) {\n    // index\n    temp = readBits(br, 8);\n    // if (temp != 1) {\n    //     return error_msg(\"payload_not_type_1\");\n    // }\n    // // battery bit\n    temp = readBits(br, 1);\n    // batt = (temp!=null && temp<parseInt(1<<5) ? round1(3.0 + (0.05 * temp)) : null);\n    \n    temp = readBits(br, 14);\n    t    = (temp!=null && temp<parseInt(1<<14) ? round2((0.01 * temp) - 50.0) : null);\n    if (t!=null) {\n        temp = readBits(br, 8);\n        tm   = (temp!=null && temp<parseInt(1<<8) ? round2(t - (0.05 * temp)) : null);\n        temp = readBits(br, 8);\n        tx   = (temp!=null && temp<parseInt(1<<8) ? round2(t + (0.05 * temp)) : null);\n    }\n    temp = readBits(br, 9);\n    h    = (temp!=null && temp<parseInt(1<<9) ? round1(0.2 * temp) : null);\n    temp = readBits(br, 15);\n    p    = (temp!=null && temp<parseInt(1<<15) ? round2(30000.0 + (2.5 * temp)) : null);\n    temp=readBits(br, 11);\n    s    = (temp!=null && temp<parseInt(1<<11) ? temp: null);\n    if (s != null) {\n        temp = readBits(br, 10);\n        sm   = (temp!=null && temp<parseInt(1<<10) ? s - 2*temp: null);\n        temp = readBits(br, 10);\n        sx   = (temp!=null && temp<parseInt(1<<10) ? s + 2*temp: null);\n    }\n    // continue from here.\n    // rain clicks...\n}\n\nreturn {\n    msg: {\n        helix_batt: batt,\n        t: t,\n        tm: tm,\n        tx: tx,\n        h: h,\n        p: p,\n        s: s,\n        sm: sm,\n        sx: sx\n    },\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1784893249346,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "480470a0-8750-11f1-a387-c9cb240000d9"
+      },
+      "name" : "Gen2 b64 decoder",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Exit with an error message. Payload not decoded.",
+        "layoutX" : 1096,
+        "layoutY" : 250
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "7df2e5c0-8750-11f1-a387-c9cb240000d9"
+      },
+      "name" : "error",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainOutputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "Payload decoded",
+        "layoutX" : 1095,
+        "layoutY" : 650
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "7df2e5c1-8750-11f1-a387-c9cb240000d9"
+      },
+      "name" : "success",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainOutputNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
