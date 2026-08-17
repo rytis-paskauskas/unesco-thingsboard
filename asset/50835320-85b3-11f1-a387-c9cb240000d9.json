@@ -1,0 +1,236 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "1493e000-4a96-11ef-8fc6-b7a18605200a"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "label" : null,
+    "name" : "UNESCO IHP Ghana Monitoring Network",
+    "ownerId" : null,
+    "type" : "default"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "9dc2aec0-85c1-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520822
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "b5b2bb70-85cf-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520819
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "cdf01810-85cd-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1373463
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "ef1ee5a0-85cf-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1374032
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "f2a31330-8436-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1333984
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "f6e14710-85c0-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520816
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "03400dd0-85cf-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1373464
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "1fcb1250-85d0-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520817
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "49cd5040-85d0-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520821
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "49d73920-85c1-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1374033
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "58ce5050-8506-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1333985
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "74dae180-85c1-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520820
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "75ff0dd0-85cf-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520815
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "50835320-85b3-11f1-a387-c9cb240000d9"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "7a697760-85d0-11f1-a387-c9cb240000d9"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 1520818
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "abstract",
+      "lastUpdateTs" : 1784970494712,
+      "longValue" : null,
+      "strValue" : "A UNESCO project to strengthen Ghana’s resilience against floods and droughts to protect lives and livelihoods with the support of the Government of Japan."
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "description",
+      "lastUpdateTs" : 1784970755166,
+      "longValue" : null,
+      "strValue" : "<p>UNESCO, in partnership with the Government of Ghana and with financial support from Japan, has launched a 12-month project to strengthen resilience to floods and droughts under climate change in Ghana. The project <it>\"Strengthening Resilience on Water-Related Disasters under Climate Change for a Sustainable Society in Ghana’’</it> combines scientific innovation, local community empowerment, and policy support to address the root causes of water-related disasters.</p><p>Focusing on the Volta River Basin and other high-risk areas, the initiative provides input for national adaptation planning while equipping communities with practical tools to reduce risks and safeguard livelihoods.</p><p>See also: <a href=\"https://www.unesco.org/en/articles/strengthening-resilience-water-related-disasters-ghana\">press release</a></p>"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "title",
+      "lastUpdateTs" : 1784970450988,
+      "longValue" : null,
+      "strValue" : "Strengthening resilience to water-related disasters in Ghana"
+    } ]
+  },
+  "calculatedFields" : [ ]
+}
