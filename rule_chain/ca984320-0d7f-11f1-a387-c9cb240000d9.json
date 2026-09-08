@@ -81,6 +81,14 @@
       "toIndex" : 15,
       "type" : "Success"
     }, {
+      "fromIndex" : 10,
+      "toIndex" : 32,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 33,
+      "type" : "Success"
+    }, {
       "fromIndex" : 11,
       "toIndex" : 12,
       "type" : "True"
@@ -169,6 +177,14 @@
       "toIndex" : 15,
       "type" : "Success"
     }, {
+      "fromIndex" : 28,
+      "toIndex" : 32,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 28,
+      "toIndex" : 33,
+      "type" : "Success"
+    }, {
       "fromIndex" : 29,
       "toIndex" : 11,
       "type" : "Success"
@@ -183,6 +199,14 @@
     }, {
       "fromIndex" : 30,
       "toIndex" : 31,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 32,
+      "toIndex" : 34,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 33,
+      "toIndex" : 35,
       "type" : "Success"
     } ],
     "firstNodeIndex" : 9,
@@ -639,7 +663,7 @@
         "fetchTo" : "METADATA",
         "clientAttributeNames" : [ ],
         "sharedAttributeNames" : [ ],
-        "serverAttributeNames" : [ "slope", "intercept", "inactivityTimeout", "latitude", "longitude" ],
+        "serverAttributeNames" : [ "slope", "intercept", "inactivityTimeout" ],
         "latestTsKeyNames" : [ ],
         "getLatestValueWithTs" : false
       },
@@ -659,13 +683,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 429,
-        "layoutY" : 599
+        "layoutX" : 748,
+        "layoutY" : 695
       },
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "msg={\n    'slope':0.2,\n    'intercept':0.0,\n    'inactivityTimeout':3660000,\n    'latitude':0,\n    'longitude':0\n};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n"
+        "tbelScript" : "msg={\n    'slope':0.2,\n    'intercept':0.0,\n    'inactivityTimeout':3660000\n};\nmsgType = \"POST_ATTRIBUTES_REQUEST\";\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -693,7 +717,7 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "var dif1 = 0.0;\nvar dif2 = 0.0;\nif ((metadata.ss_rc != null) && (msg.rc!=metadata.ss_rc)) {\n    dif1 = msg.rc - parseInt(metadata.ss_rc);\n    if (dif1 < 0) dif1 += 4096;\n}\n\nif ((metadata.ss_rcc != null) && (msg.rcc!=metadata.ss_rcc)) {\n    dif2 = msg.rcc - parseInt(metadata.ss_rcc);\n    if (dif2 < 0) dif2 += 4096;\n}\n\nmsg.put(\"rainfall\", 1.0*dif1 + 0.01*dif2);\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "var dif1 = 0.0;\nvar dif2 = 0.0;\nif ((metadata.ss_rc != null) && (msg.rc!=metadata.ss_rc)) {\n    dif1 = msg.rc - parseFloat(metadata.ss_rc);\n    if (dif1 < 0) dif1 += 4096.0;\n}\n\nif ((metadata.ss_rcc != null) && (msg.rcc!=metadata.ss_rcc)) {\n    dif2 = msg.rcc - parseFloat(metadata.ss_rcc);\n    if (dif2 < 0) dif2 += 4096.0;\n}\n\nmsg.put(\"rainfall\", 1.0*dif1 + 0.01*dif2);\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
@@ -707,7 +731,7 @@
         "entityType" : "RULE_NODE",
         "id" : "cabcbb11-0d7f-11f1-a387-c9cb240000d9"
       },
-      "name" : "calculate non-scaled rainfall",
+      "name" : "non-scaled rainfall",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -865,13 +889,13 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "function round3(x) {\n    return Math.round(x * 1000.0) / 1000.0;\n}\n\nif (metadata.ss_slope != null && metadata.ss_intercept != null) {\n    msg.rainfall = round3((java.lang.Double.parseDouble(metadata.ss_slope)*msg.rainfall) + java.lang.Double.parseDouble(metadata.ss_intercept));\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+        "tbelScript" : "function round3(x) {\n    return Math.round(x * 1000.0) / 1000.0;\n}\n\nif (metadata.ss_slope != null && metadata.ss_intercept != null) {\n    msg.rainfall = round3((parseFloat(metadata.ss_slope)*msg.rainfall) + parseFloat(metadata.ss_intercept));\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1775130363233,
+        "allEnabledUntil" : 1787920187988,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -1085,6 +1109,136 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1368,
+        "layoutY" : 69
+      },
+      "configuration" : {
+        "latestTsKeyNames" : [ "rc", "rcc" ],
+        "aggregation" : "NONE",
+        "fetchMode" : "FIRST",
+        "orderBy" : "ASC",
+        "limit" : 1000,
+        "useMetadataIntervalPatterns" : false,
+        "startIntervalPattern" : "",
+        "endIntervalPattern" : "",
+        "startInterval" : 1455,
+        "startIntervalTimeUnit" : "MINUTES",
+        "endInterval" : 1425,
+        "endIntervalTimeUnit" : "MINUTES"
+      },
+      "configurationVersion" : 2,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1787917348125,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5d885150-a2d3-11f1-a387-c9cb240000d9"
+      },
+      "name" : "counter 1D ago",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetTelemetryNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1364,
+        "layoutY" : 19
+      },
+      "configuration" : {
+        "latestTsKeyNames" : [ "rc", "rcc" ],
+        "aggregation" : "NONE",
+        "fetchMode" : "FIRST",
+        "orderBy" : "ASC",
+        "limit" : 1000,
+        "useMetadataIntervalPatterns" : false,
+        "startIntervalPattern" : "",
+        "endIntervalPattern" : "",
+        "startInterval" : 10095,
+        "startIntervalTimeUnit" : "MINUTES",
+        "endInterval" : 10065,
+        "endIntervalTimeUnit" : "MINUTES"
+      },
+      "configurationVersion" : 2,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1787917496803,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "cbe90040-a2d3-11f1-a387-c9cb240000d9"
+      },
+      "name" : "counter 7D ago",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetTelemetryNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1674,
+        "layoutY" : 71
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var rc = null;\nvar rcc = null;\n\nif (metadata.containsKey(\"rc\") && metadata.rc !=null) {\n    rc=parseInt(metadata.rc.replace(\"\\\"\",\"\"));\n}\nif (metadata.containsKey(\"rcc\") && metadata.rcc !=null) {\n    rcc=parseInt(metadata.rcc.replace(\"\\\"\",\"\"));\n}\n\nmsg.put(\"rc1d\", rc);\nmsg.put(\"rcc1d\", rcc);\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1787919260061,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "3ea858f0-a2d5-11f1-a387-c9cb240000d9"
+      },
+      "name" : "calculate 1 D rainfall",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1668,
+        "layoutY" : 13
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var rc = null;\nvar rcc = null;\n\nif (metadata.containsKey(\"rc\") && metadata.rc !=null) {\n    rc=parseInt(metadata.rc.replace(\"\\\"\",\"\"));\n}\nif (metadata.containsKey(\"rcc\") && metadata.rcc !=null) {\n    rcc=parseInt(metadata.rcc.replace(\"\\\"\",\"\"));\n}\n\nmsg.put(\"rc7d\", rc);\nmsg.put(\"rcc7d\", rcc);\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1787919260061,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "68ce99a0-a2d5-11f1-a387-c9cb240000d9"
+      },
+      "name" : "calculate 7 D rainfall",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
     } ],
     "ruleChainConnections" : null
   },
